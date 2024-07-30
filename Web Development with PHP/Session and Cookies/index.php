@@ -2,9 +2,7 @@
 session_start();
 $name = isset($_SESSION['name']) ? $_SESSION['name'] : 'No name found in session.';
 $theme = isset($_COOKIE['theme']) ? $_COOKIE['theme'] : 'light'; // light is default.
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
