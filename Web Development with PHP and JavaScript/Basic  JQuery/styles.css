@@ -1,0 +1,41 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.wrapper {
+    display: flex;
+    width: 80%;
+    justify-content: space-between;
+}
+
+.container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fadeDiv {
+    width: 80%;
+    height: 100px;
+    background-color: #2ca8e6;
+    color: white;
+    text-align: center;
+    line-height: 100px;
+    cursor: pointer;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+}
+
+.fadeDiv.hidden {
+    opacity: 0;
+}
+
+.fadeDiv:hover {
+    background-color: #07337a;
+}
