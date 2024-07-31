@@ -14,34 +14,34 @@ $result = $conn->query($sql);
 
 <ul>
 <?php
-if ($result->num_rows > 0) {
-    while ($row = $result->fetch_object()) {
-        echo "<li>";
-        echo htmlspecialchars($row->task, ENT_QUOTES, 'UTF-8');
-        echo "<form method='post' action='delete_task.php' style='display:inline;'>
-                    <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
-                    <input type='submit' value='Delete the task'>
-                </form>";
-        echo "<form method='post' action='update_task.php' style='display:inline;'>
-                <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
-                <input type='text' name='task' placeholder='Update task' value='" . htmlspecialchars($row->task, ENT_QUOTES, 'UTF-8') . "' required>
+if ($result->num_rows > 0):
+    while ($row = $result->fetch_object()):
+?>
+        <li>
+            <?php echo htmlspecialchars($row->task, ENT_QUOTES, 'UTF-8'); ?>
+            <form method='post' action='delete_task.php' style='display:inline;'>
+                <input type='hidden' name='task_id' value='<?php echo intval($row->task_id); ?>'>
+                <input type='submit' value='Delete the task'>
+            </form>
+            <form method='post' action='update_task.php' style='display:inline;'>
+                <input type='hidden' name='task_id' value='<?php echo intval($row->task_id); ?>'>
+                <input type='text' name='task' placeholder='Update task' value='<?php echo htmlspecialchars($row->task, ENT_QUOTES, 'UTF-8'); ?>' required>
                 <input type='submit' value='Update the task'>
-                </form>";
-        if (!$row->completed) {
-            echo "<form method='post' action='complete_task.php' style='display:inline;'>
-                    <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
+            </form>
+            <?php if (!$row->completed): ?>
+                <form method='post' action='complete_task.php' style='display:inline;'>
+                    <input type='hidden' name='task_id' value='<?php echo intval($row->task_id); ?>'>
                     <input type='submit' value='Complete the task'>
-                  </form>";
-        } else {
-            echo "Completed";
-        }
-
-        echo "</li>";
-    }
-    
-} else {
+                </form>
+            <?php else: ?>
+                Completed
+            <?php endif; ?>
+        </li>
+<?php
+    endwhile;
+else:
     echo "No tasks found";
-}
+endif;
 ?>
 </ul>
 
