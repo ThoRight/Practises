@@ -21,7 +21,12 @@ if ($result->num_rows > 0) {
         echo "<form method='post' action='delete_task.php' style='display:inline;'>
                     <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
                     <input type='submit' value='Delete the task'>
-                  </form>";
+                </form>";
+        echo "<form method='post' action='update_task.php' style='display:inline;'>
+                <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
+                <input type='text' name='task' placeholder='Update task' value='" . htmlspecialchars($row->task, ENT_QUOTES, 'UTF-8') . "' required>
+                <input type='submit' value='Update the task'>
+                </form>";
         if (!$row->completed) {
             echo "<form method='post' action='complete_task.php' style='display:inline;'>
                     <input type='hidden' name='task_id' value='" . intval($row->task_id) . "'>
@@ -30,6 +35,7 @@ if ($result->num_rows > 0) {
         } else {
             echo "Completed";
         }
+
         echo "</li>";
     }
     
