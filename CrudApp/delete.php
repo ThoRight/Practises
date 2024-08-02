@@ -32,106 +32,107 @@ $result = $conn->query($sql);
 </head>
 
 <body>
-    <div class="container">
-        <header class="d-flex justify-content-center py-3">
-            <ul class="nav nav-pills">
-                <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
-                <li class="nav-item"><a href="create.php" class="nav-link">Create User</a></li>
-                <li class="nav-item"><a href="update.php" class="nav-link">Update User</a></li>
-                <li class="nav-item"><a href="delete.php" class="nav-link active">Delete User</a></li>
-                <li class="nav-item"><a href="read.php" class="nav-link">Display User</a></li>
-            </ul>
-        </header>
-    </div>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Id</th>
-                <th scope="col">Username</th>
-                <th scope="col">Email</th>
-                <th scope="col">Password</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            $currentRowNum = $start_from + 1; // Start numbering from the correct offset
-            if ($result->num_rows > 0) :
-                while ($row = $result->fetch_object()) :
-            ?>
-                    <tr>
-                        <th scope="row"><?php echo $currentRowNum; ?></th>
-                        <td><?php echo htmlspecialchars($row->id); ?></td>
-                        <td><?php echo htmlspecialchars($row->username); ?></td>
-                        <td><?php echo htmlspecialchars($row->email); ?></td>
-                        <td><?php echo htmlspecialchars($row->password); ?></td>
-                    </tr>
-                    <?php $currentRowNum++; ?>
-            <?php
-                endwhile;
-            endif;
-            ?>
-        </tbody>
-    </table>
-
-    <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <!-- Previous Page Link -->
-            <?php if ($page > 1) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="delete.php?page=<?php echo $page - 1; ?>" aria-label="Previous">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-            <?php else : ?>
-                <li class="page-item disabled">
-                    <span class="page-link" aria-label="Previous">&laquo;</span>
-                </li>
-            <?php endif; ?>
-
-            <!-- Previous Page Number -->
-            <?php if ($page > 1) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="delete.php?page=<?php echo $page - 1; ?>"><?php echo $page - 1; ?></a>
-                </li>
-            <?php endif; ?>
-
-            <!-- Current Page Number -->
-            <li class="page-item active" aria-current="page">
-                <span class="page-link"><?php echo $page; ?></span>
-            </li>
-
-            <!-- Next Page Number -->
-            <?php if ($page < $total_pages) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="delete.php?page=<?php echo $page + 1; ?>"><?php echo $page + 1; ?></a>
-                </li>
-            <?php endif; ?>
-
-            <!-- Next Page Link -->
-            <?php if ($page < $total_pages) : ?>
-                <li class="page-item">
-                    <a class="page-link" href="delete.php?page=<?php echo $page + 1; ?>" aria-label="Next">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            <?php else : ?>
-                <li class="page-item disabled">
-                    <span class="page-link" aria-label="Next">&raquo;</span>
-                </li>
-            <?php endif; ?>
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="create.php" class="nav-link">Create User</a></li>
+            <li class="nav-item"><a href="update.php" class="nav-link">Update User</a></li>
+            <li class="nav-item"><a href="delete.php" class="nav-link active">Delete User</a></li>
+            <li class="nav-item"><a href="read.php" class="nav-link">Display User</a></li>
         </ul>
-    </nav>
-    
-    </table>
-    <h1>Delete the user by id.</h1>
-    <form id="delete_account" method="POST" action="delete_user.php">
-        <div class="form-group">
-            <label for="id">Id:</label>
-            <input type="number" class="form-control" id="id" name="id" placeholder="Enter Id">
-        </div>
-        <button type="submit" class="btn btn-primary">Delete Account</button>
-    </form>
+    </header>
+    <div class="container">
+
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Username</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+                $currentRowNum = $start_from + 1; // Start numbering from the correct offset
+                if ($result->num_rows > 0) :
+                    while ($row = $result->fetch_object()) :
+                ?>
+                        <tr>
+                            <th scope="row"><?php echo $currentRowNum; ?></th>
+                            <td><?php echo htmlspecialchars($row->id); ?></td>
+                            <td><?php echo htmlspecialchars($row->username); ?></td>
+                            <td><?php echo htmlspecialchars($row->email); ?></td>
+                            <td><?php echo htmlspecialchars($row->password); ?></td>
+                        </tr>
+                        <?php $currentRowNum++; ?>
+                <?php
+                    endwhile;
+                endif;
+                ?>
+            </tbody>
+        </table>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center">
+                <!-- Previous Page Link -->
+                <?php if ($page > 1) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="delete.php?page=<?php echo $page - 1; ?>" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="Previous">&laquo;</span>
+                    </li>
+                <?php endif; ?>
+
+                <!-- Previous Page Number -->
+                <?php if ($page > 1) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="delete.php?page=<?php echo $page - 1; ?>"><?php echo $page - 1; ?></a>
+                    </li>
+                <?php endif; ?>
+
+                <!-- Current Page Number -->
+                <li class="page-item active" aria-current="page">
+                    <span class="page-link"><?php echo $page; ?></span>
+                </li>
+
+                <!-- Next Page Number -->
+                <?php if ($page < $total_pages) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="delete.php?page=<?php echo $page + 1; ?>"><?php echo $page + 1; ?></a>
+                    </li>
+                <?php endif; ?>
+
+                <!-- Next Page Link -->
+                <?php if ($page < $total_pages) : ?>
+                    <li class="page-item">
+                        <a class="page-link" href="delete.php?page=<?php echo $page + 1; ?>" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                <?php else : ?>
+                    <li class="page-item disabled">
+                        <span class="page-link" aria-label="Next">&raquo;</span>
+                    </li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+
+        </table>
+        <h1>Delete the user by id.</h1>
+        <form id="delete_account" method="POST" action="delete_user.php">
+            <div class="form-group">
+                <label for="id">Id:</label>
+                <input type="number" class="form-control" id="id" name="id" placeholder="Enter Id">
+            </div>
+            <button type="submit" class="btn btn-primary">Delete Account</button>
+        </form>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
