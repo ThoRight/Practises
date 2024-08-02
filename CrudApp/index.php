@@ -1,3 +1,6 @@
+<?php
+include('validation.php');
+?>
 <!DOCTYPE html>
 <html>
 
@@ -31,6 +34,12 @@
         elseif ($status === 'success_delete') :
         ?>
             <p>Deleted Account Successfully!</p>
+
+        <?php
+        elseif ($status === 'error') :
+        ?>
+            <?php $errorStr = isset($_GET['errorStr']) ? htmlspecialchars(urldecode($_GET['errorStr']), ENT_QUOTES, 'UTF-8') : 'gg'; ?>
+            <p>Error!! <?php echo $errorStr ?></p>
         <?php
         elseif ($status === '') :
         ?>
