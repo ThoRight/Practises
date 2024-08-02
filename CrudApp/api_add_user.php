@@ -1,5 +1,6 @@
 <?php
 include('database.php');
+include('validation.php');
 
 header('Content-Type: application/json');
 
@@ -9,6 +10,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = isset($data['username']) ? htmlspecialchars($data['username']) : '';
     $email = isset($data['email']) ? htmlspecialchars($data['email']) : '';
     $password = isset($data['password']) ? htmlspecialchars($data['password']) : '';
+
+    $errorStr = checkUsername($username);
+    if (!empty($errorStr)) {
+        http_response_code(400); // Bad Request
+        echo json_encode([
+            'status' => 'error',
+            'message' => $errorStr
+        ]);
+        exit;
+    }
+    $errorStr = checkEmail($email);
+    if (!empty($errorStr)) {
+        http_response_code(400); // Bad Request
+        echo json_encode([
+            'status' => 'error',
+            'message' => $errorStr
+        ]);
+        exit;
+    }
+    $errorStr = checkPassword($password);
+    if (!empty($errorStr)) {
+        http_response_code(400); // Bad Request
+        echo json_encode([
+            'status' => 'error',
+            'message' => $errorStr
+        ]);
+        exit;
+    }
+
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
     if (empty($username) || empty($email) || empty($password) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
