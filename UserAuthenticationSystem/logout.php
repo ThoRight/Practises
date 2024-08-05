@@ -1,11 +1,23 @@
 <?php
-session_start();
+include('session_management.php');
+
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 } else {
+    if (isset($_COOKIE['rememberme'])) {
+        setcookie('rememberme', '', time() - 3600, '/', '', true, true);
+
+        $token = $_COOKIE['rememberme'];
+        $stmt = $conn->prepare("UPDATE users SET token = 0 WHERE token = ?");
+        $stmt->bind_param('s', $token);
+        $stmt->execute();
+        $stmt->close();
+    }
     session_unset();
     session_destroy();
 }
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

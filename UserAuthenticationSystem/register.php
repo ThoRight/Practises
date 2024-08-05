@@ -39,7 +39,7 @@ if (isset($_SESSION['username'])) {
                 <small id="passwordHelp" class="form-text text-muted">Use at least one character, number and symbol, length must be at least 8 </small>
             </div>
             <div class="form-group">
-                <input id="submit_button" type="submit" class="btn btn-primary" value="Create Account"></button>
+                <input id="submit_button" type="submit" class="btn btn-primary" value="Register"></button>
                 <a href="index.php" class="btn btn-secondary">Main Menu</a>
             </div>
 
