@@ -10,8 +10,8 @@ if (
     $errorStr = "";
     $username = htmlspecialchars($_POST['username']);
     $password = htmlspecialchars($_POST['password']);
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    $errorStr = checkCredentials($username, $hashed_password, $conn);
+    //$hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    $errorStr = checkCredentials($username, $password, $conn);
     if (!empty($errorStr)) {
         $encodedErrorStr = urlencode($errorStr);
         header("Location: index.php?status=error&errorStr=" . $encodedErrorStr);
