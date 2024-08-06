@@ -12,7 +12,7 @@ if (
     $errorStr = checkUsername($username);
     if (!empty($errorStr)) {
         $encodedErrorStr = urlencode($errorStr);
-        header("Location: index.php?status=error&errorStr=" . $encodedErrorStr);
+        header("Location: register.php?status=error&errorStr=" . $encodedErrorStr);
         exit();
     }
     $errorStr = checkEmail($email);

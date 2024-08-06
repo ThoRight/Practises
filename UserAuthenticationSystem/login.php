@@ -30,6 +30,11 @@ if (isset($_SESSION['username'])) {
                 <small id="usernameHelp" class="form-text text-muted">Don't use spaces</small>
             </div>
             <div class="form-group">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                <small id="passwordHelp" class="form-text text-muted">Use at least one character, number and symbol, length must be at least 8 </small>
+            </div>
+            <div class="form-group">
                 <input id="submit_button" type="submit" class="btn btn-primary" value="Login"></button>
                 <a href="index.php" class="btn btn-secondary">Main Menu</a>
             </div>

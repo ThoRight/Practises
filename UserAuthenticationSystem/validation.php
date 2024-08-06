@@ -93,19 +93,21 @@ function checkIdIfExist($entry, $conn)
     }
 }
 
-function checkCredentials($username, $hashed_password, $conn)
+function checkCredentials($username, $password, $conn)
 {
-    $sql = "SELECT * FROM users WHERE username= ?";
+    $sql = "SELECT * FROM users WHERE username = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param('s', $username);
     $stmt->execute();
     $result = $stmt->get_result();
-    while ($row = $result->fetch_assoc()) {
-        if (!empty($row)) {
-            if (password_verify($_POST["password"], $hashed_password)) {
-                return "";
-            }
+
+    if ($row = $result->fetch_assoc()) {
+        if (password_verify($password, $row['password'])) {
+            return "";
+        } else {
+            return "Invalid password.";
         }
+    } else {
+        return "User not found.";
     }
-    return "Please Check Your Credentials.";
 }
