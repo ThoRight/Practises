@@ -16,17 +16,42 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/home.css">
+
 </head>
 
 <body>
-    <header class="d-flex justify-content-center py-3">
+    <header class="d-flex justify-content-between align-items-center py-3">
+        <!-- Left Side - Navigation Links -->
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="create.php" class="nav-link">Posts</a></li>
             <li class="nav-item"><a href="update.php" class="nav-link">About</a></li>
             <li class="nav-item"><a href="delete.php" class="nav-link">Contact</a></li>
         </ul>
+
+        <!-- Center - Image or Text -->
+        <div class="navbar-center">
+            <img src="path/to/your/image.png" alt="Center Image" class="navbar-center-image">
+            <!-- or use text -->
+            <!-- <span class="navbar-center-text">Your Text Here</span> -->
+        </div>
+
+        <!-- Right Side - Profile Dropdown -->
+        <div class="dropdown profile-dropdown">
+            <a href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img src="path/to/profile-pic.jpg" class="rounded-circle" width="40" height="40" alt="Profile Picture">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
+                <a class="dropdown-item" href="profile.php">Profile</a>
+                <a class="dropdown-item" href="logout.php">Logout</a>
+            </div>
+        </div>
     </header>
+
+
+
+
 
     <div class="container mt-5">
         <div id="posts" class="row"></div>

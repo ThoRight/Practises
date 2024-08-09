@@ -1,41 +1,60 @@
-.card {
-    background-size: cover;
-    background-position: center;
-    color: white;
-    height: 300px;
-    /* Fixed height for all cards */
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    /* Ensure card border remains if needed */
-    border-radius: .25rem;
-    /* Maintain border radius */
 }
 
-.card-header,
-.card-footer {
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background for readability */
-    flex: 0 0 auto;
-    /* Prevent header and footer from growing */
+.content {
+    flex: 1;
 }
 
-.card-body {
-    background-color: rgba(0, 0, 0, 0.5);
-    /* Semi-transparent background for readability */
-    flex: 1 1 auto;
-    /* Allow body to take up remaining space */
-    overflow-y: auto;
-    /* Add scroll if content overflows */
-    padding: 1rem;
-    /* Adjust padding as needed */
+header{
+    padding: 5%;
+}
+/* Center Image/Text Styling */
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
 }
 
-.card-title,
-.card-text {
-    margin-bottom: 0;
-    /* Ensure consistent spacing */
+.navbar-center-image {
+    max-height: 50px;
 }
+
+.navbar-center-text {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Profile Dropdown Styling */
+.profile-dropdown {
+    margin-left: auto;
+}
+
+.profile-dropdown img {
+    cursor: pointer;
+}
+
+/* Additional dropdown-menu styling to prevent conflicts */
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
+}
+
+/* Ensure that only the new elements are affected */
+header>.navbar-center,
+header>.profile-dropdown {
+    display: flex;
+    align-items: center;
+}
+
 
 .post-container {
     margin: 20px auto;

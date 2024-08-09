@@ -1,0 +1,38 @@
+.card {
+    background-size: cover;
+    background-position: center;
+    color: white;
+    height: 300px;
+    /* Fixed height for all cards */
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    /* Ensure card border remains if needed */
+    border-radius: .25rem;
+    /* Maintain border radius */
+}
+
+.card-header,
+.card-footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background for readability */
+    flex: 0 0 auto;
+    /* Prevent header and footer from growing */
+}
+
+.card-body {
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Semi-transparent background for readability */
+    flex: 1 1 auto;
+    /* Allow body to take up remaining space */
+    overflow-y: auto;
+    /* Add scroll if content overflows */
+    padding: 1rem;
+    /* Adjust padding as needed */
+}
+
+.card-title,
+.card-text {
+    margin-bottom: 0;
+    /* Ensure consistent spacing */
+}
