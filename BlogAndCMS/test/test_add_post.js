@@ -18,7 +18,7 @@ $(document).ready(function () {
                             'user_id': 1,
                             'title': 'TITLE POST',
                             'content': firstPostBody,  // Use the body from the first post
-                            'category_id': 1
+                            'category_id': 2
                         }),
                         contentType: 'application/json',  // Specify content type
                         dataType: 'json',
