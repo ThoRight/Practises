@@ -1,0 +1,31 @@
+/* custom.css */
+
+/* Style for the horizontal categories list */
+.categories-list {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    border-bottom: 2px solid #dee2e6; /* Optional: border to separate from content */
+}
+
+.categories-list .category-link {
+    display: inline-block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.categories-list .category-link.active {
+    color: #0056b3; /* Active link color */
+    border-bottom: 2px solid #0056b3; /* Optional: underline active link */
+}
+
+.categories-list .category-link:hover {
+    color: #0056b3; /* Hover color */
+}
+
+hr {
+    margin: 20px 0;
+}

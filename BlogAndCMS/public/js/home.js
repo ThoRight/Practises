@@ -1,22 +1,27 @@
 $(document).ready(function () {
     const postsPerPage = 9; // Number of cards per page
     let totalPages = 1;
-    let currentPage = getPageFromURL() || 1; // Get page from URL or default to 1
+    let currentPage = getPageFromURL('page') || 1;
+    let currentCategory = getPageFromURL('category') || 1;
 
-    function getPageFromURL() {
+    function getPageFromURL(name) {
         const urlParams = new URLSearchParams(window.location.search);
-        return parseInt(urlParams.get('page'), 10);
+        return parseInt(urlParams.get(name), 10);
     }
 
-    function fetchPosts(page) {
+    function fetchPosts(page, currentCategory) {
 
         console.log('Fetching Page: ' + page);
         $.ajax({
             url: 'http://localhost/BlogAndCMS/api/get_posts.php',
             method: 'GET',
-            data: { 'page': page },
+            data: {
+                'page': page,
+                'category_id': currentCategory
+            },
             dataType: 'json',
             success: function (response) {
+                console.log("Total pages: " + response.totalPages);
                 // Update posts
                 $('#posts').empty();
                 response.data.forEach(post => {
@@ -38,8 +43,8 @@ $(document).ready(function () {
                 totalPages = response.totalPages;
                 updatePagination();
             },
-            error: function () {
-                alert('Error loading posts');
+            error: function (response) {
+                alert('Error loading posts' + response.message);
             }
         });
     }
@@ -108,16 +113,16 @@ $(document).ready(function () {
     }
 
     // Initial fetch
-    fetchPosts(currentPage);
+    fetchPosts(currentPage, currentCategory);
 
     // Handle pagination click
     $('#pagination').on('click', '.page-link', function (e) {
         e.preventDefault();
         const page = $(this).data('page');
         if (page) {
-            fetchPosts(page);
+            fetchPosts(page, currentCategory);
             // Update URL to reflect the current page
-            window.history.pushState(null, '', `?page=${page}`);
+            window.history.pushState(null, '', `?page=${page}&category=${currentCategory}`);
         }
     });
 
@@ -128,11 +133,62 @@ $(document).ready(function () {
         }
     });
 
-    // Handle browser navigation (e.g., back/forward buttons)
     window.onpopstate = function (event) {
-        const page = getPageFromURL();
+        const page = getPageFromURL('page');
+        const category = getPageFromURL('category');
         if (page) {
-            fetchPosts(page);
+            fetchPosts(page, category);
         }
     };
+
+    function fetchCategories() {
+        console.log("Fetching Categories");
+        $.ajax({
+            url: 'http://localhost/BlogAndCMS/api/get_categories.php',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.message);
+                var $categoriesList = $('#categories-list');
+                $categoriesList.empty();
+
+                data.data.forEach(function (category, index) {
+                    var isActive = (category.category_id == currentCategory) ? 'active' : ''; // Use currentCategory to set active class
+                    var categoryItem = `<li class="list-inline-item">
+                                            <a href="#" class="category-link ${isActive}" data-category-id="${category.category_id}">
+                                                ${category.category_name}
+                                            </a>
+                                        </li>`;
+                    $categoriesList.append(categoryItem);
+                });
+
+                // Handle category clicks
+                $('.category-link').on('click', function (e) {
+                    e.preventDefault();
+                    const categoryId = $(this).data('category-id'); // Use data-category-id attribute
+                    const categoryName = $(this).text();
+
+                    // Remove active class from all
+                    $('.category-link').removeClass('active');
+
+                    // Add active class to clicked category
+                    $(this).addClass('active');
+
+                    // Fetch posts for the selected category
+                    currentCategory = categoryId;
+                    fetchPosts(1, currentCategory); // Fetch posts for the first page
+                    window.history.pushState(null, '', `?page=1&category=${currentCategory}`);
+                });
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.error('AJAX request failed:', textStatus, errorThrown);
+            }
+        });
+    }
+
+
+
+
+    console.log("TEST");
+    fetchCategories();
 });

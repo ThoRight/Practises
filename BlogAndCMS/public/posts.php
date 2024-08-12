@@ -23,8 +23,8 @@ if (!isset($_SESSION['username'])) {
     <header class="d-flex justify-content-between align-items-center py-3">
         <!-- Left Side - Navigation Links -->
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="index.php" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="posts.php" class="nav-link">Posts</a></li>
+            <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="posts.php" class="nav-link active">Posts</a></li>
             <li class="nav-item"><a href="update.php" class="nav-link">About</a></li>
             <li class="nav-item"><a href="delete.php" class="nav-link">Contact</a></li>
         </ul>

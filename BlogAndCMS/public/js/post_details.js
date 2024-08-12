@@ -257,10 +257,6 @@ $(document).ready(function () {
         }
     }
 
-
-    // Initial fetch
-    fetchComments(currentPage, postId);
-
     // Handle pagination click
     $('#pagination').on('click', '.page-link', function (e) {
         e.preventDefault();
@@ -279,6 +275,16 @@ $(document).ready(function () {
             fetchComments(page, postId);
         }
     };
+
+
+
+
+
+
+
+    // Initial fetch
+    fetchComments(currentPage, postId);
+    
 });
 
 
