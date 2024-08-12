@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Calculate total number of pages
     $totalPages = ceil($response['totalPosts'] / $posts_per_page);
 
-    $sql = "SELECT * FROM posts WHERE category_id = ?  LIMIT ?, ?";
+    $sql = "SELECT * FROM post_categories WHERE category_id = ?  LIMIT ?, ?";
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
@@ -38,7 +38,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
             $result = $stmt->get_result();
             $posts = [];
             while ($row = $result->fetch_assoc()) {
-                $posts[] = $row;
+                $res = getPostbyPostId($row['post_id'], $conn);
+                if ($res['status'] === 'success') {
+                    $posts[] = $res['post'];
+                }
             }
             $response = [
                 'status' => 'success',

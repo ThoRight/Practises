@@ -21,6 +21,47 @@ $(document).ready(function () {
         $('#post-content').html('<p>No Post Here...</p>');
     }
 
+    function renderEditorContent(editorData) {
+        // Empty the container where the content will be rendered
+        $('#editor-display').empty();
+
+        // Iterate through each block in the Editor.js JSON data
+        editorData.blocks.forEach(block => {
+            switch (block.type) {
+                case 'header':
+                    $('#editor-display').append(`<h${block.data.level}>${block.data.text}</h${block.data.level}>`);
+                    break;
+
+                case 'paragraph':
+                    $('#editor-display').append(`<p>${block.data.text}</p>`);
+                    break;
+
+                case 'image':
+                    let imageHtml = `<img src="${block.data.file.url}" alt="${block.data.caption}"`;
+                    if (block.data.stretched) imageHtml += ' class="img-fluid"';
+                    if (block.data.withBorder) imageHtml += ' style="border: 1px solid #000;"';
+                    if (block.data.withBackground) imageHtml += ' style="background: #f5f5f5;"';
+                    imageHtml += '>';
+
+                    $('#editor-display').append(`<figure>${imageHtml}<figcaption>${block.data.caption}</figcaption></figure>`);
+                    break;
+
+                case 'list':
+                    let listTag = block.data.style === 'ordered' ? 'ol' : 'ul';
+                    let listItems = block.data.items.map(item => `<li>${item}</li>`).join('');
+                    $('#editor-display').append(`<${listTag}>${listItems}</${listTag}>`);
+                    break;
+
+                // Add cases for other block types (e.g., embed, quote) if needed
+
+                default:
+                    console.warn('Unknown block type', block.type);
+                    break;
+            }
+        });
+    }
+
+
     // Function to fetch post details
     function fetchPost(postId) {
         $.ajax({
@@ -31,7 +72,11 @@ $(document).ready(function () {
             success: function (response) {
                 if (response.status === 'success') {
                     $('#post-title').text(response.data.title);
-                    $('#post-content').html(response.data.content);
+                    //editor.render(JSON.parse(response.data.content));
+                    // Render the content
+                    let editorData = JSON.parse(response.data.content);
+                    renderEditorContent(editorData);
+                    //$('#post-content').html(response.data.content);
                 } else {
                     $('#post-title').text('Post Not Found');
                     $('#post-content').html('<p>The post you are looking for does not exist.</p>');
@@ -43,39 +88,6 @@ $(document).ready(function () {
             }
         });
     }
-    /*
-        // Function to fetch comments
-        function fetchComments(postId) {
-            $.ajax({
-                url: 'http://localhost/BlogAndCMS/api/get_comments.php',
-                method: 'GET',
-                data: { post_id: postId },
-                dataType: 'json',
-                success: function (response) {
-                    if (response.status === 'success') {
-                        $('#comments-list').empty();
-                        response.data.forEach(comment => {
-                            $('#comments-list').append(`
-    
-                                <div class="media mb-4">
-                                    <div class="media-body">
-                                    <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User image">
-                                        <h5 class="mt-0">${comment.username}</h5>
-                                        ${comment.comment}
-                                    </div>
-                                </div>
-                            `);
-                        });
-                    } else {
-                        $('#comments-list').html('<p>No comments available.</p>');
-                    }
-                },
-                error: function () {
-                    $('#comments-list').html('<p>An error occurred while fetching comments.</p>');
-                }
-            });
-        }
-    */
     // Handle form submission
     $('#comment-form').on('submit', function (e) {
 
@@ -284,7 +296,7 @@ $(document).ready(function () {
 
     // Initial fetch
     fetchComments(currentPage, postId);
-    
+
 });
 
 

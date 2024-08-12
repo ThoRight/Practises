@@ -51,3 +51,30 @@ function getTotalPostsByCategoryId($category_id, $conn)
         return (['status' => 'error', 'message' => 'Error fetching the result: ' . $stmt->error]);
     }
 }
+
+function getPostByPostId($id, $conn)
+{
+    $sql = "SELECT * FROM posts WHERE post_id = ?";
+    $stmt = $conn->prepare($sql);
+
+    if ($stmt === false) {
+        return ['status' => 'error', 'message' => 'Prepare failed: ' . $conn->error];
+    }
+
+    $stmt->bind_param('i', $id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    $post = $result->fetch_assoc();
+
+    $stmt->close();
+
+    if ($post) {
+        return [
+            'status' => 'success',
+            'post' => $post
+        ];
+    } else {
+        return ['status' => 'error', 'message' => 'Post not found'];
+    }
+}
