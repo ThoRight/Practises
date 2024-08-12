@@ -45,6 +45,7 @@ $userName = $_SESSION['username'];
         <div class="post-container">
             <h1 class="post-title" id="post-title">Loading...</h1>
             <div class="post-content" id="post-content">
+                <div id="editor-display"></div>
             </div>
         </div>
     </div>
