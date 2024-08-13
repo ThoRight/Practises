@@ -190,7 +190,41 @@ $(document).ready(function () {
             }
         });
     }
-
+    $('#search-input').on('input', function () {
+        const query = $(this).val().trim();
+        if (query.length > 0) {
+            $.ajax({
+                url: 'http://localhost/BlogAndCMS/api/search_title.php',
+                method: 'GET',
+                data: { query: query },
+                dataType: 'json',
+                success: function (response) {
+                    let results = '';
+                    if (response.length > 0) {
+                        response.forEach(post => {
+                            console.log(post);
+                            results +=
+                                `<div class="search-result-item">
+                                    <a href="http://localhost/BlogAndCMS/public/post_details.php?post_id=${post.post_id}">
+                                        <div class="search-result-content">
+                                            <h3>${post.title}</h3>
+                                        </div>
+                                    </a>
+                                </div>`;
+                        });
+                    } else {
+                        results = '<div class="search-result-item">No posts found.</div>';
+                    }
+                    $('#search-results').html(results);
+                },
+                error: function () {
+                    $('#search-results').html('<div class="search-result-item">Error fetching posts.</div>');
+                }
+            });
+        } else {
+            $('#search-results').empty();
+        }
+    });
 
 
 

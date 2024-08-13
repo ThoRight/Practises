@@ -58,7 +58,13 @@ if (!isset($_SESSION['username'])) {
         </ul>
         <hr> <!-- Horizontal line to separate categories from posts -->
     </div>
-
+    <div class="container mt-5">
+        <h2>Search Posts</h2>
+        <input type="text" id="search-input" class="form-control" placeholder="Search for posts by title...">
+        <div id="search-results" class="search-results mt-3">
+            <!-- Search results will be displayed here -->
+        </div>
+    </div>
     <!-- Posts Section -->
     <div class="container mt-5">
         <div id="posts" class="row"></div>
