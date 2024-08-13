@@ -1,10 +1,10 @@
 <?php
 include('../includes/session_management.php');
-/*
-if ($_SESSION['role'] != 'admin') {
+
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     die("Only admins can add post.");
 }
-*/
+
 $userId = $_SESSION['user_id'];
 ?>
 
@@ -30,9 +30,9 @@ $userId = $_SESSION['user_id'];
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="posts.php" class="nav-link">Posts</a></li>
-            <li class="nav-item"><a href="update.php" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="delete.php" class="nav-link">Contact</a></li>
-            <li class="nav-item"><a href="delete.php" class="nav-link active">Add Post</a></li>
+            <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="create_post.php" class="nav-link active">Add Post</a></li>
         </ul>
 
         <!-- Center - Image or Text -->

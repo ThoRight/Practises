@@ -36,3 +36,13 @@
     margin-bottom: 0;
     /* Ensure consistent spacing */
 }
+
+.view-count-badge {
+    background-color: rgba(0, 123, 255, 0.5);
+    /* Semi-transparent blue */
+    color: white;
+    font-size: 0.75rem;
+    /* Smaller font size */
+    border-radius: 12px;
+    /* Rounded corners */
+}

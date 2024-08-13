@@ -24,16 +24,16 @@ if (
             echo json_encode(['status' => 'error', 'message' => $errorStr]);
             exit();
         } else {
-            $user_id = 0;
 
-            $user_check = $conn->prepare("SELECT user_id FROM users WHERE username = ?");
+            $user_check = $conn->prepare("SELECT user_id, username, role FROM users WHERE username = ?");
             $user_check->bind_param('s', $username);
             $user_check->execute();
-            $user_check->bind_result($user_id);
+            $user_check->bind_result($user_id, $username, $role);
             if ($user_check->fetch()) {
                 // Result fetched successfully
                 $_SESSION['user_id'] = $user_id;
                 $_SESSION['username'] = $username;
+                $_SESSION['role'] = $role;
                 echo json_encode(['status' => 'success', 'message' => 'Login Successful']);
             } else {
                 // Handle case where no result was fetched

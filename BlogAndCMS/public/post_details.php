@@ -35,9 +35,10 @@ $userName = $_SESSION['username'];
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="create.php" class="nav-link">Posts</a></li>
-            <li class="nav-item"><a href="update.php" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="delete.php" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="posts.php" class="nav-link">Posts</a></li>
+            <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="create_post.php" class="nav-link">Add Post</a></li>
         </ul>
     </header>
 

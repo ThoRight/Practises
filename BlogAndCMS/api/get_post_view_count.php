@@ -8,7 +8,7 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $post_id = isset($_GET['post_id']) ? intval($_GET['post_id']) : 1;
 
-    $sql = "SELECT * FROM posts where post_id=?";
+    $sql = "SELECT view_count FROM posts where post_id=?";
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {
@@ -25,17 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 'message' => 'Execute failed: ' . $stmt->error,
             ];
         } else {
-            $result = $stmt->get_result();
-            $post;
-            while ($row = $result->fetch_assoc()) {
-                $post = $row;
-            }
-            $res_inc_view_count = inc_view_count($post, $conn);
+            $stmt->bind_result($view_count);
             $response = [
                 'status' => 'success',
-                'data' => $post,
-                'message' => 'Post fetched successfully',
-                'response_increment_view_count' => $res_inc_view_count
+                'view_count' => $view_count
             ];
         }
         $stmt->close();

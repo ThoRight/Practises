@@ -28,7 +28,12 @@ $(document).ready(function () {
 
                     $('#posts').append(`
                         <div class="col-md-4">
-                            <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url('http://localhost/BlogAndCMS/public/images/blog.png');">
+                            <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url('http://localhost/BlogAndCMS/public/images/blog.png'); position: relative;">
+                                <div class="position-absolute top-0 end-0 p-2">
+                                    <span class="badge bg-info text-dark view-count-badge">
+                                        <strong>View:</strong> ${post.view_count}
+                                    </span>
+                                </div>
                                 <div class="card-header bg-transparent">${post.title}</div>
                                 <div class="card-body bg-transparent">
                                 </div>
