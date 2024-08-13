@@ -17,6 +17,21 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/category.css"> <!-- Link to custom CSS -->
+    <style>
+        .search-results {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .search-result-item {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-result-item:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
 </head>
 
 <body>
@@ -56,6 +71,14 @@ if (!isset($_SESSION['username'])) {
             <!-- lists from database -->
         </ul>
         <hr> <!-- Horizontal line to separate categories from posts -->
+    </div>
+
+    <div class="container mt-5">
+        <h2>Search Posts</h2>
+        <input type="text" id="search-input" class="form-control" placeholder="Search for posts by title...">
+        <div id="search-results" class="search-results mt-3">
+            <!-- Search results will be displayed here -->
+        </div>
     </div>
 
     <!-- Posts Section -->
