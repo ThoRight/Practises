@@ -28,7 +28,7 @@ function getUsernameByUserId($id, $conn)
 
 function getTotalPostsByCategoryId($category_id, $conn)
 {
-    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM posts WHERE category_id = ?");
+    $stmt = $conn->prepare("SELECT COUNT(*) AS total FROM post_categories WHERE category_id = ?");
     if (!$stmt) {
         return (['status' => 'error', 'message' => 'Error preparing the SQL statement: ' . $conn->error]);
     }

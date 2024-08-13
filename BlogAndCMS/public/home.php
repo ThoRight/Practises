@@ -28,6 +28,7 @@ if (!isset($_SESSION['username'])) {
             <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
             <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
             <li class="nav-item"><a href="create_post.php" class="nav-link">Add Post</a></li>
+            <li class="nav-item"><a href="manage_posts.php" class="nav-link">Manage Posts</a></li>
         </ul>
 
         <!-- Center - Image or Text -->
