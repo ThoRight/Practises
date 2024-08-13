@@ -25,8 +25,8 @@ if (!isset($_SESSION['username'])) {
         <ul class="nav nav-pills">
             <li class="nav-item"><a href="index.php" class="nav-link" aria-current="page">Home</a></li>
             <li class="nav-item"><a href="posts.php" class="nav-link active">Posts</a></li>
-            <li class="nav-item"><a href="update.php" class="nav-link">About</a></li>
-            <li class="nav-item"><a href="delete.php" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="about.php" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="contact.php" class="nav-link">Contact</a></li>
             <li class="nav-item"><a href="create_post.php" class="nav-link">Add Post</a></li>
         </ul>
 

@@ -1,38 +1,13 @@
-.comment-section .media {
-    background-color: #f8f9fa;
-    padding: 15px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.comment-section .media .media-body h5 {
-    font-weight: bold;
-    color: #007bff;
-}
-
-.comment-section .media .media-body {
-    background-color: #ffffff;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.comment-section .media img {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-}
-
 .card-header {
-    background-color: #007bff;
-    color: #ffffff;
-    border-bottom: 1px solid #007bff;
+    position: relative;
 }
 
-.card-header h4 {
-    margin-bottom: 0;
+.card-header .text-muted {
+    margin-top: 0.5rem;
 }
 
-.card {
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.15);
+.card-header .btn {
+    position: absolute;
+    right: 0;
+    top: 0;
 }

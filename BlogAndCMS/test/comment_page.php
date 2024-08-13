@@ -12,48 +12,37 @@
 </head>
 
 <body>
-    <div class="container mt-5">
-        <div class="card">
-            <div class="card-header">
-                <h4>Comments</h4>
-            </div>
-            <div class="card-body">
-                <!-- Comment Form -->
-                <div class="mb-4">
-                    <h5>Leave a Comment</h5>
-                    <form>
-                        <div class="form-group">
-                            <label for="username">Username</label>
-                            <input type="text" class="form-control" id="username" placeholder="Enter your username">
-                        </div>
-                        <div class="form-group">
-                            <label for="comment">Comment</label>
-                            <textarea class="form-control" id="comment" rows="3" placeholder="Enter your comment"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary mt-2">Post Comment</button>
-                    </form>
-                </div>
-
-                <!-- Displayed Comments -->
-                <div class="comment-section">
-                    <div class="media mb-4">
-                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User image">
-                        <div class="media-body">
-                            <h5 class="mt-0">John Doe</h5>
-                            This is a comment example.
-                        </div>
+    <div class="col-md-4">
+        <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url('http://localhost/BlogAndCMS/public/images/blog.png'); position: relative;">
+            <!-- Header with title and metadata -->
+            <div class="card-header d-flex justify-content-between align-items-center p-2 bg-transparent border-0 position-relative">
+                <!-- Metadata and user info -->
+                <div class="d-flex align-items-center">
+                    <div class="me-2">
+                        <span class="fw-bold text-light">${post.title}</span>
                     </div>
-                    <div class="media mb-4">
-                        <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User image">
-                        <div class="media-body">
-                            <h5 class="mt-0">Jane Smith</h5>
-                            Another comment goes here.
-                        </div>
+                    <div class="text-muted small">
+                        <span class="d-block">${post.user_name}</span>
+                        <span class="d-block">${post.date}</span>
+                        <span class="d-block">${post.read_time}</span>
                     </div>
                 </div>
+                <!-- More actions button -->
+                <button class="btn btn-outline-light btn-sm" type="button" aria-label="More actions">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="19" viewBox="0 0 19 19" role="img" class="bi bi-three-dots">
+                        <path d="M2.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zM9.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0zM16.5 9.5a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0z" />
+                    </svg>
+                </button>
             </div>
+            <!-- Card body -->
+            <div class="card-body bg-transparent">
+                <!-- Additional content goes here -->
+            </div>
+            <!-- Card footer -->
+            <div class="card-footer bg-transparent text-muted">${post.footer}</div>
         </div>
     </div>
+
 
     <script src="jquery3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
