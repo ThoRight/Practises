@@ -65,6 +65,22 @@ if (!isset($_SESSION['username'])) {
             <!-- Search results will be displayed here -->
         </div>
     </div>
+    <div class="container mt-3">
+        <select id="criteriaDropdown" class="form-select form-select-lg">
+            <option value="created_at">Sort By</option>
+            <option value="title">Title</option>
+            <option value="view_count">View</option>
+            <option value="created_at">Date</option>
+        </select>
+    </div>
+    <div class="container mt-3">
+        <select id="orderDropdown" class="form-select form-select-lg">
+            <option value="asc">Order</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select>
+    </div>
+
     <!-- Posts Section -->
     <div class="container mt-5">
         <div id="posts" class="row"></div>

@@ -8,6 +8,9 @@ header('Content-Type: application/json');
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $page = isset($_GET['page']) ? intval($_GET['page']) : 1;
     $category_id = isset($_GET['category_id']) ? intval($_GET['category_id']) : 1;
+    $order = isset($_GET['order']) ? htmlspecialchars($_GET['order']) : 'asc';
+    $criteria = isset($_GET['criteria']) ? htmlspecialchars($_GET['criteria']) : 'created_at';
+
     $posts_per_page = 9;
     $offset = ($page - 1) * $posts_per_page;
 
@@ -18,7 +21,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Calculate total number of pages
     $totalPages = ceil($response['totalPosts'] / $posts_per_page);
 
-    $sql = "SELECT * FROM post_categories WHERE category_id = ?  LIMIT ?, ?";
+    $sql = "SELECT p.* 
+        FROM post_categories pc
+        JOIN posts p ON pc.post_id = p.post_id
+        WHERE pc.category_id = ?
+        ORDER BY p.$criteria $order
+        LIMIT ?, ?";
+
     $stmt = $conn->prepare($sql);
 
     if ($stmt === false) {

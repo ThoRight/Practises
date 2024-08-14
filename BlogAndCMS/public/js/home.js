@@ -3,21 +3,27 @@ $(document).ready(function () {
     let totalPages = 1;
     let currentPage = getPageFromURL('page') || 1;
     let currentCategory = getPageFromURL('category') || 1;
+    let currentCriteria = getPageFromURL('criteria') || 'created_at'; // Default criteria
+    let currentOrder = getPageFromURL('order') || 'asc'; // Default order
 
     function getPageFromURL(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return parseInt(urlParams.get(name), 10);
     }
 
-    function fetchPosts(page, currentCategory) {
+    function fetchPosts(page, currentCategory, currentOrder, currentCriteria) {
 
         console.log('Fetching Page: ' + page);
+        console.log("currentO", currentOrder);
+        console.log("currentCriteria", currentCriteria);
         $.ajax({
             url: 'http://localhost/BlogAndCMS/api/get_posts.php',
             method: 'GET',
             data: {
                 'page': page,
-                'category_id': currentCategory
+                'category_id': currentCategory,
+                'criteria': currentCriteria,
+                'order': currentOrder
             },
             dataType: 'json',
             success: function (response) {
@@ -25,7 +31,6 @@ $(document).ready(function () {
                 // Update posts
                 $('#posts').empty();
                 response.data.forEach(post => {
-
                     $('#posts').append(`
                         <div class="col-md-4">
                             <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url('http://localhost/BlogAndCMS/public/images/blog.png'); position: relative;">
@@ -118,16 +123,16 @@ $(document).ready(function () {
     }
 
     // Initial fetch
-    fetchPosts(currentPage, currentCategory);
+    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
 
     // Handle pagination click
     $('#pagination').on('click', '.page-link', function (e) {
         e.preventDefault();
         const page = $(this).data('page');
         if (page) {
-            fetchPosts(page, currentCategory);
+            fetchPosts(page, currentCategory, currentOrder, currentCriteria);
             // Update URL to reflect the current page
-            window.history.pushState(null, '', `?page=${page}&category=${currentCategory}`);
+            window.history.pushState(null, '', `?page=${page}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
         }
     });
 
@@ -138,11 +143,28 @@ $(document).ready(function () {
         }
     });
 
+    $('#criteriaDropdown').change(function () {
+        let criteria = $(this).val();
+        currentCriteria = criteria;
+        console.log("CRITERIA: ", currentCriteria);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
+    });
+    $('#orderDropdown').change(function () {
+        let order = $(this).val();
+        currentOrder = order;
+        console.log("ORDER: ", currentOrder);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
+    });
+
     window.onpopstate = function (event) {
         const page = getPageFromURL('page');
         const category = getPageFromURL('category');
+        const order = getPageFromURL('order');
+        const criteria = getPageFromURL('criteria');
         if (page) {
-            fetchPosts(page, category);
+            fetchPosts(page, category, order, criteria);
         }
     };
 
@@ -181,8 +203,8 @@ $(document).ready(function () {
 
                     // Fetch posts for the selected category
                     currentCategory = categoryId;
-                    fetchPosts(1, currentCategory); // Fetch posts for the first page
-                    window.history.pushState(null, '', `?page=1&category=${currentCategory}`);
+                    fetchPosts(1, currentCategory, currentOrder, currentCriteria); // Fetch posts for the first page
+                    window.history.pushState(null, '', `?page=1&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
