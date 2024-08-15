@@ -73,6 +73,21 @@ include './navbar/navbar.php';
         <div class="card cms-card">
             <div class="card-header cms-card-header">
                 <h2>Manage Posts</h2>
+                <div class="container mt-3">
+                    <select id="criteriaDropdown" class="form-select form-select-lg">
+                        <option value="created_at">Sort By</option>
+                        <option value="title">Title</option>
+                        <option value="view_count">View</option>
+                        <option value="created_at">Date</option>
+                    </select>
+                </div>
+                <div class="container mt-3">
+                    <select id="orderDropdown" class="form-select form-select-lg">
+                        <option value="asc">Order</option>
+                        <option value="asc">Ascending</option>
+                        <option value="desc">Descending</option>
+                    </select>
+                </div>
             </div>
             <div id="posts" class="cms-card-body">
                 <table class="table table-hover">

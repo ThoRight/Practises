@@ -3,13 +3,15 @@ $(document).ready(function () {
     let totalPages = 1;
     let currentPage = getPageFromURL('page') || 1;
     let currentCategory = getPageFromURL('category') || 1;
+    let currentCriteria = getPageFromURL('criteria') || 'created_at';
+    let currentOrder = getPageFromURL('order') || 'asc';
 
     function getPageFromURL(name) {
         const urlParams = new URLSearchParams(window.location.search);
         return parseInt(urlParams.get(name), 10);
     }
 
-    function fetchPosts(page, currentCategory) {
+    function fetchPosts(page, currentCategory, currentOrder, currentCriteria) {
 
         console.log('Fetching Page: ' + page);
         $.ajax({
@@ -17,7 +19,9 @@ $(document).ready(function () {
             method: 'GET',
             data: {
                 'page': page,
-                'category_id': currentCategory
+                'category_id': currentCategory,
+                'criteria': currentCriteria,
+                'order': currentOrder
             },
             dataType: 'json',
             success: function (response) {
@@ -114,16 +118,16 @@ $(document).ready(function () {
     }
 
     // Initial fetch
-    fetchPosts(currentPage, currentCategory);
+    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
 
     // Handle pagination click
     $('#pagination').on('click', '.page-link', function (e) {
         e.preventDefault();
         const page = $(this).data('page');
         if (page) {
-            fetchPosts(page, currentCategory);
+            fetchPosts(page, currentCategory, currentOrder, currentCriteria);
             // Update URL to reflect the current page
-            window.history.pushState(null, '', `?page=${page}&category=${currentCategory}`);
+            window.history.pushState(null, '', `?page=${page}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
         }
     });
 
@@ -133,12 +137,27 @@ $(document).ready(function () {
             window.location.href = `post_details.php?post_id=${postId}`;
         }
     });
-
+    $('#criteriaDropdown').change(function () {
+        let criteria = $(this).val();
+        currentCriteria = criteria;
+        console.log("CRITERIA: ", currentCriteria);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
+    });
+    $('#orderDropdown').change(function () {
+        let order = $(this).val();
+        currentOrder = order;
+        console.log("ORDER: ", currentOrder);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
+    });
     window.onpopstate = function (event) {
         const page = getPageFromURL('page');
         const category = getPageFromURL('category');
+        const criteria = getPageFromURL('criteria');
+        const order = getPageFromURL('order');
         if (page) {
-            fetchPosts(page, category);
+            fetchPosts(page, category, order, criteria);
         }
     };
 
@@ -177,8 +196,8 @@ $(document).ready(function () {
 
                     // Fetch posts for the selected category
                     currentCategory = categoryId;
-                    fetchPosts(1, currentCategory); // Fetch posts for the first page
-                    window.history.pushState(null, '', `?page=1&category=${currentCategory}`);
+                    fetchPosts(1, currentCategory, currentOrder, currentCriteria); // Fetch posts for the first page
+                    window.history.pushState(null, '', `?page=1&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
                 });
             },
             error: function (jqXHR, textStatus, errorThrown) {
@@ -201,7 +220,7 @@ $(document).ready(function () {
                 },
                 success: function (response) {
                     alert('Post deleted successfully.');
-                    fetchPosts(currentPage, currentCategory); // Refresh the posts
+                    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria); // Refresh the posts
                 },
                 error: function (xhr, status, error) {
                     alert('Error deleting post: ' + error);
