@@ -15,7 +15,7 @@ $(document).ready(function () {
 
         console.log('Fetching Page: ' + page);
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_posts.php',
+            url: appURL + 'api/get_posts.php',
             method: 'GET',
             data: {
                 'page': page,
@@ -164,7 +164,7 @@ $(document).ready(function () {
     function fetchCategories() {
         console.log("Fetching Categories");
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_categories.php',
+            url: appURL + 'api/get_categories.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -213,7 +213,7 @@ $(document).ready(function () {
 
         if (confirm('Are you sure you want to delete this post?')) {
             $.ajax({
-                url: 'http://localhost/BlogAndCMS/api/delete_post.php',
+                url: appURL + 'api/delete_post.php',
                 method: 'POST',
                 data: {
                     'post_id': postId

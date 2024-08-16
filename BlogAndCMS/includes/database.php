@@ -1,10 +1,7 @@
 <?php
-$db_server = "localhost";
-$db_user = "root";
-$db_pass = "";
-$db_name = "blogdb";
+include('../config.php');
 
-$conn = new mysqli($db_server, $db_user, $db_pass, $db_name);
+$conn = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn->connect_error) {
     die("SQL Connection Error: " . $conn->connect_error);
 }

@@ -1,5 +1,7 @@
 <?php
+include('../config.php');
 include('../includes/session_management.php');
+
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 }
@@ -18,6 +20,9 @@ if (!isset($_SESSION['username'])) {
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="./css/category.css"> <!-- Link to custom CSS -->
+    <script type="text/javascript">
+        const appURL = '<?php echo APP_URL; ?>';
+    </script>
     <style>
         .search-results {
             max-height: 300px;
@@ -93,6 +98,7 @@ if (!isset($_SESSION['username'])) {
     <script src="./js/jquery3.7.1.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="./js/editor.js"></script>
     <script src="./js/home.js"></script>
 </body>
 

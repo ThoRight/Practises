@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+
     function fetchCategories() {
         $.ajax({
             url: appURL + 'api/get_categories.php',
@@ -14,6 +15,7 @@ $(document).ready(function () {
                             var option = $('<option></option>')
                                 .attr('value', category.category_id) // Use category ID as the value
                                 .text(category.category_name);       // Display category name
+
                             $('#category-select').append(option);
                         }
                     });
@@ -26,10 +28,12 @@ $(document).ready(function () {
             }
         });
     }
+
     fetchCategories();
     // Submit button click handler
     $('#submit-button').on('click', function () {
         let title = $('#post-title').val();
+        console.log("EDITOR", editor.data);
         editor.save().then((outputData) => {
             console.log('Article data: ', outputData);
 
@@ -38,7 +42,7 @@ $(document).ready(function () {
             selectedCategories.push('1');
             // Send the data to the server
             $.ajax({
-                url: appURL + 'api/add_post.php',
+                url: appURL + 'api/edit_post.php',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify({

@@ -35,14 +35,14 @@ $(document).ready(function () {
                 password: password,
             };
             $.ajax({
-                url: 'http://localhost/BlogAndCMS/api/login_user.php',
+                url: appURL + 'api/login_user.php',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(formData),
                 success: function (response) {
                     console.log(response);
                     if (response.status === 'success') {
-                        window.location.href = 'http://localhost/BlogAndCMS/public/home.php';
+                        window.location.href = appURL + 'public/home.php';
                     } else {
                         $('#inputUsername').addClass('is-invalid');
                         $('#inputPassword').addClass('is-invalid');

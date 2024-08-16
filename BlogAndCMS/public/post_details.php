@@ -1,12 +1,11 @@
 <?php
+include('../config.php');
 include('../includes/session_management.php');
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 }
 $userId = $_SESSION['user_id'];
 $userName = $_SESSION['username'];
-$currentPage = 'posts';
-include './navbar/navbar.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +25,7 @@ include './navbar/navbar.php';
         // Pass PHP variables to JavaScript
         const userId = <?php echo json_encode($userId); ?>;
         const userName = <?php echo json_encode($userName); ?>;
-
+        const appURL = '<?php echo APP_URL; ?>';
         // Now variable1 and variable2 can be used in your JavaScript
         console.log(userId); // Output: 3
         console.log(userName); // Output: 4
@@ -34,6 +33,10 @@ include './navbar/navbar.php';
 </head>
 
 <body>
+    <?php
+    $currentPage = 'posts';
+    include './navbar/navbar.php';
+    ?>
     <div class="container mt-5">
         <div class="post-container">
             <h1 class="post-title" id="post-title">Loading...</h1>

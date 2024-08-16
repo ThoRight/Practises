@@ -65,7 +65,7 @@ $(document).ready(function () {
     // Function to fetch post details
     function fetchPost(postId) {
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_post_detail.php',
+            url: appURL + 'api/get_post_detail.php',
             method: 'GET',
             data: { post_id: postId },
             dataType: 'json',
@@ -97,7 +97,7 @@ $(document).ready(function () {
         console.log("userId: " + userId);
         console.log("postId: " + postId);
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/add_comment.php',
+            url: appURL + 'api/add_comment.php',
             method: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({
@@ -135,7 +135,7 @@ $(document).ready(function () {
 
         console.log('Fetching Page: ' + page + "  ->" + postId);
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_comments.php',
+            url: appURL + 'api/get_comments.php',
             method: 'GET',
             dataType: 'json',
             data: {
@@ -156,14 +156,18 @@ $(document).ready(function () {
                     // Update posts
                     $('#comments-list').empty();
                     response.data.forEach(comment => {
-
+                        console.log("comment: ", comment);
                         $('#comments-list').append(`
                             <div class="media mb-4">
                                 <div class="media-body">
-                                <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User image">
-                                <h5 class="mt-0">${comment.username}</h5>
-                                    ${comment.comment}
-                                </div>
+                                    <a href="profile.php?user_id=${comment.user_id}">
+                                    <img class="mr-3 rounded-circle" src="https://via.placeholder.com/50" alt="User image">
+                                    </a>
+                                    <a href="profile.php?user_id=${comment.user_id}">
+                                    <h5 class="mt-0">${comment.username}</h5>
+                                    </a>
+        ${comment.comment}
+    </div>
                             </div>
                         `);
                     });

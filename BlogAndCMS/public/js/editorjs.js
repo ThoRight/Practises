@@ -32,12 +32,12 @@ const editor = new EditorJS({
             class: ImageTool, // Assuming you're using the Image Tool plugin
             config: {
                 endpoints: {
-                    byFile: 'http://localhost/BlogAndCMS/api/upload_image.php', // Optional for uploading images
-                    byUrl: 'http://localhost/BlogAndCMS/api/upload_image_url.php' // Optional for fetching images by URL
+                    byFile: appURL + 'api/upload_image.php', // Optional for uploading images
+                    byUrl: appURL + 'api/upload_image_url.php' // Optional for fetching images by URL
                 }
             }
         }
     },
-
     autofocus: true,
+
 });

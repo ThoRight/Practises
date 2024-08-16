@@ -66,7 +66,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
                 if ($check['status'] === 'success') {
                     $comments[] = [
                         'comment' => $row['comment'],
-                        'username' => $check['username']
+                        'username' => $check['username'],
+                        'user_id' => $row['user_id']
                     ];
                 }
             }

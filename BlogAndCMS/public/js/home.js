@@ -17,7 +17,7 @@ $(document).ready(function () {
         console.log("currentO", currentOrder);
         console.log("currentCriteria", currentCriteria);
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_posts.php',
+            url: appURL + 'api/get_posts.php',
             method: 'GET',
             data: {
                 'page': page,
@@ -33,7 +33,7 @@ $(document).ready(function () {
                 response.data.forEach(post => {
                     $('#posts').append(`
                         <div class="col-md-4">
-                            <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url('http://localhost/BlogAndCMS/public/images/blog.png'); position: relative;">
+                            <div class="card mb-3" data-post-id="${post.post_id}" style="background-image: url(${appURL} + 'public/images/blog.png'); position: relative;">
                                 <div class="position-absolute top-0 end-0 p-2">
                                     <span class="badge bg-info text-dark view-count-badge">
                                         <strong>View:</strong> ${post.view_count}
@@ -171,7 +171,7 @@ $(document).ready(function () {
     function fetchCategories() {
         console.log("Fetching Categories");
         $.ajax({
-            url: 'http://localhost/BlogAndCMS/api/get_categories.php',
+            url: appURL + 'api/get_categories.php',
             type: 'GET',
             dataType: 'json',
             success: function (data) {
@@ -216,7 +216,7 @@ $(document).ready(function () {
         const query = $(this).val().trim();
         if (query.length > 0) {
             $.ajax({
-                url: 'http://localhost/BlogAndCMS/api/search_title.php',
+                url: appURL + 'api/search_title.php',
                 method: 'GET',
                 data: { query: query },
                 dataType: 'json',
@@ -227,7 +227,7 @@ $(document).ready(function () {
                             console.log(post);
                             results +=
                                 `<div class="search-result-item">
-                                    <a href="http://localhost/BlogAndCMS/public/post_details.php?post_id=${post.post_id}">
+                                    <a href= ${appURL} + "public/post_details.php?post_id=${post.post_id}">
                                         <div class="search-result-content">
                                             <h3>${post.title}</h3>
                                         </div>
