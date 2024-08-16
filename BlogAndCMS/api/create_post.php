@@ -1,4 +1,5 @@
 <?php
+include('../config.php');
 // Read the JSON input from the request
 $data = file_get_contents('php://input');
 $decodedData = json_decode($data, true);

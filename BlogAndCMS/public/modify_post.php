@@ -1,4 +1,5 @@
 <?php
+include('../config.php');
 include('../includes/session_management.php');
 
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
@@ -31,7 +32,7 @@ include './navbar/navbar.php';
 
     <div class="container mt-5">
         <div class="post-section">
-            <h2>Create a New Post</h2>
+            <h2>Edit The Post</h2>
             <input type="text" class="form-control" id="post-title" placeholder="Enter the post title" required>
             <div id="editor"></div>
             <div class="form-group">
@@ -40,7 +41,7 @@ include './navbar/navbar.php';
 
                 </select>
             </div>
-            <button id="submit-button">Submit</button>
+            <button id="submit-button">Edit</button>
         </div>
     </div>
     <?php
@@ -68,7 +69,7 @@ include './navbar/navbar.php';
 
     <!-- Include Embed Tool -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
-    <script src="./js/create_post.js"></script>
+    <script src="./js/modify_post.js"></script>
     <script src="./js/editorjs.js"></script>
 
 </body>

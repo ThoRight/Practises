@@ -65,7 +65,7 @@ $(document).ready(function () {
                 check: check
             };
             $.ajax({
-                url: 'http://localhost/BlogAndCMS/api/create_user.php',
+                url: appURL + 'api/create_user.php',
                 type: 'POST',
                 contentType: 'application/json',
                 data: JSON.stringify(formData),
@@ -76,8 +76,8 @@ $(document).ready(function () {
                         alert(response.message);
                     }
                 },
-                error: function (xhr, status, error) {
-                    alert('An error occurred: ' + error);
+                error: function (response) {
+                    alert('An error occurred: ' + response.message);
                 }
             });
         }

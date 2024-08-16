@@ -1,3 +1,6 @@
+<?php
+include("../config.php");
+?>
 <header class="d-flex justify-content-between align-items-center py-3">
     <!-- Left Side - Navigation Links -->
     <ul class="nav nav-pills">
@@ -34,7 +37,7 @@
 
     <!-- Center - Image or Text -->
     <div class="navbar-center">
-        <img src="http://localhost/BlogAndCMS/public/images/blog.png" alt="Center Image" class="navbar-center-image">
+        <img src="<?php echo APP_URL; ?>public/images/blog.png" class="rounded-circle" width="40" height="40" alt="Profile Picture">
         <!-- or use text -->
         <!-- <span class="navbar-center-text">Your Text Here</span> -->
     </div>
@@ -42,10 +45,10 @@
     <!-- Right Side - Profile Dropdown -->
     <div class="dropdown profile-dropdown">
         <a href="#" id="profileDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <img src="http://localhost/BlogAndCMS/public/images/profile_img.jpg" class="rounded-circle" width="40" height="40" alt="Profile Picture">
+            <img src="<?php echo APP_URL; ?>public/images/profile_img.jpg" class="rounded-circle" width="40" height="40" alt="Profile Picture">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="profile.php">Profile</a>
+            <a class="dropdown-item" href="profile.php?user_id=<?php echo htmlspecialchars($_SESSION['user_id']); ?>">Profile</a>
             <a class="dropdown-item" href="logout.php">Logout</a>
         </div>
     </div>
