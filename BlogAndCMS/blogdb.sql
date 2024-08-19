@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 19 Ağu 2024, 08:28:27
+-- Üretim Zamanı: 14 Ağu 2024, 09:28:27
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -62,12 +62,7 @@ CREATE TABLE `comments` (
 
 INSERT INTO `comments` (`comment_id`, `post_id`, `user_id`, `comment`, `created_at`) VALUES
 (119, 257, 3, 'test comment', '2024-08-12 14:56:00'),
-(120, 259, 3, 'adsnkasdnkasd', '2024-08-12 15:22:00'),
-(122, 253, 6, 'TEST123', '2024-08-14 07:34:00'),
-(123, 253, 6, 'comment2', '2024-08-15 12:16:04'),
-(124, 253, 3, 'comment3', '2024-08-15 12:16:27'),
-(125, 285, 3, 'qwe', '2024-08-16 07:06:44'),
-(126, 285, 3, '', '2024-08-16 07:06:46');
+(120, 259, 3, 'adsnkasdnkasd', '2024-08-12 15:22:00');
 
 -- --------------------------------------------------------
 
@@ -87,11 +82,7 @@ CREATE TABLE `media` (
 --
 
 INSERT INTO `media` (`media_id`, `name`, `path`, `uploaded_at`) VALUES
-(14, 'blog.png', 'images/66bb16170c0bf-blog.png', '2024-08-13 08:15:19'),
-(15, 'fiatEgea.jpeg', 'images/66bf57be8865e-fiatEgea.jpeg', '2024-08-16 13:44:30'),
-(16, 'fiatEgea.jpeg', 'images/66bf58179b392-fiatEgea.jpeg', '2024-08-16 13:45:59'),
-(17, 'fiatEgea.jpeg', 'images/66bf585083bae-fiatEgea.jpeg', '2024-08-16 13:46:56'),
-(18, 'fiatEgea.jpeg', 'images/66bf58aae392c-fiatEgea.jpeg', '2024-08-16 13:48:26');
+(14, 'blog.png', 'images/66bb16170c0bf-blog.png', '2024-08-13 08:15:19');
 
 -- --------------------------------------------------------
 
@@ -117,24 +108,26 @@ CREATE TABLE `posts` (
 INSERT INTO `posts` (`post_id`, `user_id`, `title`, `content`, `category_id`, `media_id`, `view_count`, `created_at`) VALUES
 (240, 1, 'TEST TITLE', '{\"time\":1723466542005,\"blocks\":[{\"id\":\"TZTt_ravak\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST NEW EDITOR\"}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-12 12:42:22'),
 (241, 1, 'TEST TITLE', '{\"time\":1723468465426,\"blocks\":[{\"id\":\"lrypM3aifc\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:14:25'),
-(242, 3, 'TEST TITLE', '{\"time\":1723468474950,\"blocks\":[{\"id\":\"VGWWP4-cIJ\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdads\"}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-12 13:14:34'),
+(242, 3, 'TEST TITLE', '{\"time\":1723468474950,\"blocks\":[{\"id\":\"VGWWP4-cIJ\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdads\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:14:34'),
 (243, 3, 'TEST TITLE', '{\"time\":1723468492649,\"blocks\":[{\"id\":\"a_rmLo_gla\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:14:52'),
 (244, 3, 'TEST TITLE', '{\"time\":1723468512576,\"blocks\":[{\"id\":\"QUKpWdcIWs\",\"type\":\"paragraph\",\"data\":{\"text\":\"dsaasddas\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:15:12'),
-(245, 1, 'CATEGORY 2', '{\"test\":2}', 1, 0, 4, '2024-08-12 13:17:01'),
+(245, 1, 'CATEGORY 2', '{\"test\":2}', 1, 0, 3, '2024-08-12 13:17:01'),
 (246, 1, 'CATEGORY 2', '{\"test\":2}', 1, 0, 0, '2024-08-12 13:17:37'),
 (247, 1, 'CATEGORY 2', '{\"test\":2}', 1, 0, 1, '2024-08-12 13:17:58'),
 (248, 3, 'TEST TITLE', '\"{\\\"time\\\":1723468787122,\\\"blocks\\\":[{\\\"id\\\":\\\"sQgmx-pupN\\\",\\\"type\\\":\\\"paragraph\\\",\\\"data\\\":{\\\"text\\\":\\\"etste1231\\\"}}],\\\"version\\\":\\\"2.30.4\\\"}\"', 1, 0, 0, '2024-08-12 13:19:47'),
 (249, 3, 'TEST TITLE', '{\"time\":1723468834929,\"blocks\":[{\"id\":\"A58mJHwDPX\",\"type\":\"paragraph\",\"data\":{\"text\":\"test 123123123\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:20:34'),
 (250, 3, 'TEST TITLE', '{\"time\":1723470455403,\"blocks\":[{\"id\":\"FDJeOkcKZb\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasddasasdsad\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:47:35'),
 (251, 3, 'TEST TITLE', '{\"time\":1723470480637,\"blocks\":[{\"id\":\"4uDJNppiKy\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:48:00'),
-(252, 3, 'TEST TITLE', '{\"time\":1723470543230,\"blocks\":[{\"id\":\"TWV2QdUerK\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdadsasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 29, '2024-08-12 13:49:03'),
-(253, 3, 'TEST TITLE', '{\"time\":1723470563744,\"blocks\":[{\"id\":\"-NCu0ZSwD0\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 48, '2024-08-12 13:49:23'),
-(257, 3, 'TEST TITLE', '{\"time\":1723474552636,\"blocks\":[{\"id\":\"MPXP63sh4F\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST POST\"}},{\"id\":\"V9G6fm-Kbh\",\"type\":\"image\",\"data\":{\"caption\":\"CAPPTION\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba226fa882c-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-12 14:55:52'),
-(259, 3, 'title', '{\"time\":1723476113847,\"blocks\":[{\"id\":\"8NfFMOLw0v\",\"type\":\"paragraph\",\"data\":{\"text\":\"sadfsadfsadfsadf\"}},{\"id\":\"6niyL-x6yV\",\"type\":\"image\",\"data\":{\"caption\":\"\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba288a46f7b-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-12 15:21:53'),
-(260, 3, '', '{\"time\":1723536939274,\"blocks\":[],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-13 08:15:39'),
+(252, 3, 'TEST TITLE', '{\"time\":1723470543230,\"blocks\":[{\"id\":\"TWV2QdUerK\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdadsasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 17, '2024-08-12 13:49:03'),
+(253, 3, 'TEST TITLE', '{\"time\":1723470563744,\"blocks\":[{\"id\":\"-NCu0ZSwD0\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 5, '2024-08-12 13:49:23'),
+(255, 3, 'TEST TITLE', '{\"time\":1723474249551,\"blocks\":[{\"id\":\"U_SPQGj6OC\",\"type\":\"image\",\"data\":{\"caption\":\"asdsad\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba213327fce-profile_img.jpg\"}}},{\"id\":\"GkvwfL7fmi\",\"type\":\"image\",\"data\":{\"caption\":\"sdasadasd\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba213a3c923-66ba213327fce-profile_img.jpg\"}}},{\"id\":\"ddnkoLODvV\",\"type\":\"image\",\"data\":{\"caption\":\"sadads\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba2138b869c-66ba213327fce-profile_img.jpg\"}}},{\"id\":\"r8LcWkhdRX\",\"type\":\"paragraph\",\"data\":{\"text\":\"ö\"}},{\"id\":\"z3Bf8TXwQj\",\"type\":\"paragraph\",\"data\":{\"text\":\"ş\"}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-12 14:50:49'),
+(257, 3, 'TEST TITLE', '{\"time\":1723474552636,\"blocks\":[{\"id\":\"MPXP63sh4F\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST POST\"}},{\"id\":\"V9G6fm-Kbh\",\"type\":\"image\",\"data\":{\"caption\":\"CAPPTION\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba226fa882c-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-12 14:55:52'),
+(258, 3, 'TITLE!!!', '{\"time\":1723475004290,\"blocks\":[{\"id\":\"k8sm5Qty4O\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST TITLE\"}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-12 15:03:24'),
+(259, 3, 'title', '{\"time\":1723476113847,\"blocks\":[{\"id\":\"8NfFMOLw0v\",\"type\":\"paragraph\",\"data\":{\"text\":\"sadfsadfsadfsadf\"}},{\"id\":\"6niyL-x6yV\",\"type\":\"image\",\"data\":{\"caption\":\"\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba288a46f7b-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 15:21:53'),
+(260, 3, '', '{\"time\":1723536939274,\"blocks\":[],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 08:15:39'),
 (263, 3, '', '{\"time\":1723539948372,\"blocks\":[{\"id\":\"ePbYG3X5KK\",\"type\":\"paragraph\",\"data\":{\"text\":\"w\"}},{\"id\":\"zzpyE4mwC7\",\"type\":\"paragraph\",\"data\":{\"text\":\"eqwqweqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:05:48'),
 (264, 3, '', '{\"time\":1723539950831,\"blocks\":[{\"id\":\"fMI2sGjaoh\",\"type\":\"paragraph\",\"data\":{\"text\":\"qweqweqewqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-13 09:05:50'),
-(265, 3, '', '{\"time\":1723539953092,\"blocks\":[{\"id\":\"22EW6jl50w\",\"type\":\"paragraph\",\"data\":{\"text\":\"qweqewqweqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 4, '2024-08-13 09:05:53'),
+(265, 3, '', '{\"time\":1723539953092,\"blocks\":[{\"id\":\"22EW6jl50w\",\"type\":\"paragraph\",\"data\":{\"text\":\"qweqewqweqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-13 09:05:53'),
 (266, 3, '', '{\"time\":1723539955614,\"blocks\":[{\"id\":\"LVRlKlLbOQ\",\"type\":\"paragraph\",\"data\":{\"text\":\"qwewqeqweqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-13 09:05:55'),
 (267, 3, '', '{\"time\":1723539958054,\"blocks\":[{\"id\":\"26YEShEGz0\",\"type\":\"paragraph\",\"data\":{\"text\":\"qweqwqewqwe\"}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:05:58'),
 (268, 3, '', '{\"time\":1723539960700,\"blocks\":[{\"id\":\"6V3fzuLRJU\",\"type\":\"paragraph\",\"data\":{\"text\":\"qweqewqewqwqe\"}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:06:00'),
@@ -149,14 +142,7 @@ INSERT INTO `posts` (`post_id`, `user_id`, `title`, `content`, `category_id`, `m
 (277, 3, 'jsjsjsjs', '{\"time\":1723540034773,\"blocks\":[{\"id\":\"xN7pybogUz\",\"type\":\"header\",\"data\":{\"text\":\"jsjsjsjs\",\"level\":1}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:07:14'),
 (278, 3, 'jsjsjsjs', '{\"time\":1723540056587,\"blocks\":[{\"id\":\"RMlfgEJFWG\",\"type\":\"header\",\"data\":{\"text\":\"jsjsjsjs\",\"level\":1}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:07:36'),
 (279, 3, 'jsjsjsjs', '{\"time\":1723540060892,\"blocks\":[{\"id\":\"wpKGMA5-0X\",\"type\":\"header\",\"data\":{\"text\":\"jsjsjsjs\",\"level\":1}}],\"version\":\"2.30.4\"}', 1, 0, 1, '2024-08-13 09:07:40'),
-(280, 3, 'jsjsjsjsjsjsjsjs', '{\"time\":1723540099067,\"blocks\":[{\"id\":\"jxwE1fp4kO\",\"type\":\"header\",\"data\":{\"text\":\"jsjsjsjsjsjsjsjsjsjsjsjs\",\"level\":1}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-13 09:08:19'),
-(281, 3, 'asdassdasd', '{\"time\":1723728335179,\"blocks\":[{\"id\":\"1nYXvo4gbG\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasddasdsaasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 7, '2024-08-15 13:25:35'),
-(282, 3, 'test10', '{\"time\":1723728644153,\"blocks\":[{\"id\":\"ZrtY7YoIF4\",\"type\":\"paragraph\",\"data\":{\"text\":\"test10\"}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-15 13:30:44'),
-(283, 3, 'test123', '{\"time\":1723790479801,\"blocks\":[{\"id\":\"ueNdFUokGk\",\"type\":\"paragraph\",\"data\":{\"text\":\"test123\"}}],\"version\":\"2.30.5\"}', 1, 0, 2, '2024-08-16 06:41:19'),
-(284, 3, 'NEW POST', '{\"time\":1723791416384,\"blocks\":[{\"id\":\"8ZbBKfjlM2\",\"type\":\"paragraph\",\"data\":{\"text\":\"add post 123\"}}],\"version\":\"2.30.5\"}', 1, 0, 2, '2024-08-16 06:56:56'),
-(285, 3, 'asddas', '{\"time\":1723792001619,\"blocks\":[{\"id\":\"cuESUk6zcf\",\"type\":\"paragraph\",\"data\":{\"text\":\"asddasdas\"}}],\"version\":\"2.30.5\"}', 1, 0, 1, '2024-08-16 07:06:41'),
-(286, 3, 'gdfhdfgdfgdfg', '{\"time\":1723815925490,\"blocks\":[{\"id\":\"-wAcZBI_S1\",\"type\":\"image\",\"data\":{\"caption\":\"selamar\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://192.168.0.103/BlogAndCMS/api/images/66bf57be8865e-fiatEgea.jpeg\"}}}],\"version\":\"2.30.5\"}', 1, 0, 1, '2024-08-16 13:45:24'),
-(287, 3, 'araba', '{\"time\":1723816021203,\"blocks\":[{\"id\":\"pVECe_QX3l\",\"type\":\"image\",\"data\":{\"caption\":\"\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://192.168.0.103/BlogAndCMS/api/images/66bf585083bae-fiatEgea.jpeg\"}}}],\"version\":\"2.30.5\"}', 1, 0, 3, '2024-08-16 13:47:00');
+(280, 3, 'jsjsjsjsjsjsjsjs', '{\"time\":1723540099067,\"blocks\":[{\"id\":\"jxwE1fp4kO\",\"type\":\"header\",\"data\":{\"text\":\"jsjsjsjsjsjsjsjsjsjsjsjs\",\"level\":1}}],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-13 09:08:19');
 
 -- --------------------------------------------------------
 
@@ -192,10 +178,13 @@ INSERT INTO `post_categories` (`post_id`, `category_id`) VALUES
 (253, 2),
 (253, 3),
 (253, 4),
+(255, 1),
 (257, 1),
 (257, 2),
 (257, 3),
 (257, 4),
+(258, 1),
+(258, 4),
 (259, 1),
 (259, 2),
 (259, 3),
@@ -229,22 +218,7 @@ INSERT INTO `post_categories` (`post_id`, `category_id`) VALUES
 (279, 1),
 (279, 4),
 (280, 1),
-(280, 4),
-(281, 1),
-(281, 4),
-(282, 1),
-(282, 3),
-(283, 1),
-(283, 3),
-(284, 1),
-(284, 4),
-(285, 1),
-(285, 3),
-(286, 1),
-(286, 2),
-(286, 3),
-(286, 4),
-(287, 1);
+(280, 4);
 
 -- --------------------------------------------------------
 
@@ -283,12 +257,7 @@ INSERT INTO `users` (`user_id`, `fullname`, `email`, `city`, `username`, `passwo
 (1, 'John Doe', 'johndoe@example.com', 'İstanbul', 'johndoe', '$2y$10$prLQ1MOxV44EyftDAto54.VhTNZoiCniryAiFiw0Omb6sorNM.xiW', 'admin', 'I am a software developer.', '2024-08-07 10:04:41'),
 (3, 'Murat Erbilici', 'fener.muro.1907@gmail.com', 'Ankara', 'test123', '$2y$10$rKOgvkDGlRsT9lBML/dL5eLt3b6kI6oOVyGXUwQqK5Bs0EtJiUUCC', 'admin', 'asdasdadsdas', '2024-08-07 10:38:42'),
 (4, 'Murat Erbilici', 'fener.mussro.1907@gmail.com', 'Ankara', 'test1234', '$2y$10$VuM4vFN37ZW0B3NAF1Oh3uO8zlffngZKPRcEpTPd.ejl4ju16elju', 'user', 'asd', '2024-08-07 12:02:18'),
-(5, 'test111', 'asdasdas@gmail.com', 'İstanbul', 'test111', '$2y$10$OyADiGgQMFUc/VXjHN1A4OdVacK8Pky1lphca.lcXMOtqrVaG2yqS', 'user', 'test111', '2024-08-10 11:13:02'),
-(6, 'Murat Erbilici', 'fener.muro.19017@gmail.com', 'Kocaeli', 'murat123', '$2y$10$pzRoj7QFnDUYCb.UoLzGa.MP35h6nAJzpOTFpCj7pYfRfPqkXbt.i', 'admin', 'Computer Engineering Student', '2024-08-14 07:29:34'),
-(7, 'test1111', 'testacc@gmail.com', 'İstanbul', 'test', '$2y$10$y3MebI3jE8Ct724gsuNdne7KwUqk8JKVQxb1NmTRGb4/n966chUUa', 'user', '123123', '2024-08-15 14:00:36'),
-(8, 'asdadsasddasdd', 'testacc@gmail.comss', 'İstanbul', 'testasda', '$2y$10$KnzLjTvzyg8V3BG8319AYeeJ2n0qa8qCP34YHyrc9.AUvgLRgbOei', 'user', '123123', '2024-08-15 14:04:10'),
-(9, 'asdasd', 'asadsasd@gmail.com', 'İstanbul', 'asdasdasd', '$2y$10$SkU7aHpWy/Rfn6wIktQJHO/Dy2p8aMZWNGKKxviStPdeefLuAInK.', 'user', 'adsasdasd', '2024-08-15 14:06:14'),
-(10, 'Test User', 'testuser@example.com', 'Test City', 'testuser', '$2y$10$YUzu5lew/7ALi8JmRxzE4u1rJhmBfbU1TTJCxlN1sthcRKLF1dsy.', 'user', 'This is a test user.', '2024-08-15 14:13:26');
+(5, 'test111', 'asdasdas@gmail.com', 'İstanbul', 'test111', '$2y$10$OyADiGgQMFUc/VXjHN1A4OdVacK8Pky1lphca.lcXMOtqrVaG2yqS', 'user', 'test111', '2024-08-10 11:13:02');
 
 --
 -- Dökümü yapılmış tablolar için indeksler
@@ -356,25 +325,25 @@ ALTER TABLE `categories`
 -- Tablo için AUTO_INCREMENT değeri `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
+  MODIFY `comment_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `media`
 --
 ALTER TABLE `media`
-  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `media_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `posts`
 --
 ALTER TABLE `posts`
-  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=288;
+  MODIFY `post_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=281;
 
 --
 -- Tablo için AUTO_INCREMENT değeri `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Dökümü yapılmış tablolar için kısıtlamalar
