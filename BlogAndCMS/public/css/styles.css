@@ -13,14 +13,12 @@ body {
     flex: 1;
 }
 
-header{
+header {
     padding: 5%;
 }
+
 /* Center Image/Text Styling */
 .navbar-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
     text-align: center;
 }
 

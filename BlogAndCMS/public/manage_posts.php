@@ -1,12 +1,13 @@
 <?php
 include('../config.php');
 include('../includes/session_management.php');
-if (!isset($_SESSION['username'])) {
-    header("Location: index.php");
-}
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     die("Only admins can manage posts...");
 }
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
+
 $currentPage = 'manage_posts';
 include './navbar/navbar.php';
 ?>

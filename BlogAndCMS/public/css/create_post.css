@@ -1,6 +1,5 @@
 /* Custom styles for the new elements */
 .post-section {
-    background-color: #f8f9fa;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -14,11 +13,15 @@
 }
 
 #category-select.form-select option {
-    padding: 8px;
+    padding: 10px;
 }
 
 /* To enhance visibility of selected options */
 #category-select.form-select option:checked {
     background-color: #0d6efd;
     color: #fff;
+}
+
+.form-control {
+    border: none;
 }

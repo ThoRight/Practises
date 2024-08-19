@@ -11,7 +11,7 @@ $(document).ready(function () {
         return parseInt(urlParams.get(name), 10);
     }
 
-    function fetchPosts(page, currentCategory, currentOrder, currentCriteria) {
+    function fetchPosts(page, currentCategory, currentOrder, currentCriteria, appURL) {
 
         console.log('Fetching Page: ' + page);
         $.ajax({
@@ -118,14 +118,14 @@ $(document).ready(function () {
     }
 
     // Initial fetch
-    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria, appURL);
 
     // Handle pagination click
     $('#pagination').on('click', '.page-link', function (e) {
         e.preventDefault();
         const page = $(this).data('page');
         if (page) {
-            fetchPosts(page, currentCategory, currentOrder, currentCriteria);
+            fetchPosts(page, currentCategory, currentOrder, currentCriteria, appURL);
             // Update URL to reflect the current page
             window.history.pushState(null, '', `?page=${page}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
         }
@@ -141,14 +141,14 @@ $(document).ready(function () {
         let criteria = $(this).val();
         currentCriteria = criteria;
         console.log("CRITERIA: ", currentCriteria);
-        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria, appURL);
         window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
     });
     $('#orderDropdown').change(function () {
         let order = $(this).val();
         currentOrder = order;
         console.log("ORDER: ", currentOrder);
-        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria);
+        fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria, appURL);
         window.history.pushState(null, '', `?page=${currentPage}&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
     });
     window.onpopstate = function (event) {
@@ -157,11 +157,11 @@ $(document).ready(function () {
         const criteria = getPageFromURL('criteria');
         const order = getPageFromURL('order');
         if (page) {
-            fetchPosts(page, category, order, criteria);
+            fetchPosts(page, category, order, criteria, appURL);
         }
     };
 
-    function fetchCategories() {
+    function fetchCategories(appURL) {
         console.log("Fetching Categories");
         $.ajax({
             url: appURL + 'api/get_categories.php',
@@ -196,7 +196,7 @@ $(document).ready(function () {
 
                     // Fetch posts for the selected category
                     currentCategory = categoryId;
-                    fetchPosts(1, currentCategory, currentOrder, currentCriteria); // Fetch posts for the first page
+                    fetchPosts(1, currentCategory, currentOrder, currentCriteria, appURL); // Fetch posts for the first page
                     window.history.pushState(null, '', `?page=1&category=${currentCategory}&order=${currentOrder}&criteria=${currentCriteria}`);
                 });
             },
@@ -220,7 +220,7 @@ $(document).ready(function () {
                 },
                 success: function (response) {
                     alert('Post deleted successfully.');
-                    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria); // Refresh the posts
+                    fetchPosts(currentPage, currentCategory, currentOrder, currentCriteria, appURL); // Refresh the posts
                 },
                 error: function (xhr, status, error) {
                     alert('Error deleting post: ' + error);
@@ -232,5 +232,5 @@ $(document).ready(function () {
 
 
     console.log("TEST");
-    fetchCategories();
+    fetchCategories(appURL);
 });

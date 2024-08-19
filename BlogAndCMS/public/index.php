@@ -21,8 +21,9 @@ if (isset($_SESSION['username'])) {
 <body>
     <header class="d-flex justify-content-center py-3">
         <ul class="nav nav-pills">
-            <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
-            <li class="nav-item"><a href="register.php" class="nav-link">Register</a></li>
+        <li class="nav-item"><a href="home.php" class="nav-link">Home</a></li>
+        <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+        <li class="nav-item"><a href="register.php" class="nav-link">Register</a></li>
         </ul>
     </header>
     <form action="register.php" method="get"></form>

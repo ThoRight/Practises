@@ -1,11 +1,18 @@
 <?php
 include('../config.php');
 include('../includes/session_management.php');
+/*
 if (!isset($_SESSION['username'])) {
     header("Location: index.php");
 }
-$userId = $_SESSION['user_id'];
-$userName = $_SESSION['username'];
+*/
+if (isset($_SESSION['user_id']) && isset($_SESSION['username'])) {
+    $userId = $_SESSION['user_id'];
+    $userName = $_SESSION['username'];
+} else {
+    $userId = -1;
+    $userName = 'Guest';
+}
 ?>
 
 <!DOCTYPE html>

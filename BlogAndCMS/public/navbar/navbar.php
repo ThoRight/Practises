@@ -48,8 +48,19 @@ include("../config.php");
             <img src="<?php echo APP_URL; ?>public/images/profile_img.jpg" class="rounded-circle" width="40" height="40" alt="Profile Picture">
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="profile.php?user_id=<?php echo htmlspecialchars($_SESSION['user_id']); ?>">Profile</a>
-            <a class="dropdown-item" href="logout.php">Logout</a>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                $user_id = htmlspecialchars($_SESSION['user_id']);
+                echo "<a class='dropdown-item' href='profile.php?user_id=$user_id'>Profile</a>";
+                echo "<a class='dropdown-item' href='logout.php'>Logout</a>";
+            } else {
+                echo "<a class='dropdown-item' href='login.php'>Login</a>";
+                echo "<a class='dropdown-item' href='register.php'>Register</a>";
+            }
+            ?>
+
+
+
         </div>
     </div>
 </header>

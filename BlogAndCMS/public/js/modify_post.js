@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-    function fetchCategories() {
+    function fetchCategories(appURL) {
         $.ajax({
             url: appURL + 'api/get_categories.php',
             method: 'GET',
@@ -29,7 +29,7 @@ $(document).ready(function () {
         });
     }
 
-    fetchCategories();
+    fetchCategories(appURL);
     // Submit button click handler
     $('#submit-button').on('click', function () {
         let title = $('#post-title').val();

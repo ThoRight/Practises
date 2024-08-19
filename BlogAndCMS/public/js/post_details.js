@@ -14,8 +14,8 @@ $(document).ready(function () {
     currentPage = getQueryParameter('page') || 1; // Ensure currentPage is set
     console.log("current Page: " + currentPage);
     if (postId) {
-        fetchPost(postId);
-        fetchComments(currentPage, postId);
+        fetchPost(postId, appURL);
+        fetchComments(currentPage, postId, appURL);
     } else {
         $('#post-title').text('ERROR!');
         $('#post-content').html('<p>No Post Here...</p>');
@@ -63,7 +63,7 @@ $(document).ready(function () {
 
 
     // Function to fetch post details
-    function fetchPost(postId) {
+    function fetchPost(postId, appURL) {
         $.ajax({
             url: appURL + 'api/get_post_detail.php',
             method: 'GET',
@@ -90,40 +90,44 @@ $(document).ready(function () {
     }
     // Handle form submission
     $('#comment-form').on('submit', function (e) {
-
         e.preventDefault();
-        const commentContent = $('#comment-content').val();
-        console.log("Comment" + commentContent);
-        console.log("userId: " + userId);
-        console.log("postId: " + postId);
-        $.ajax({
-            url: appURL + 'api/add_comment.php',
-            method: 'POST',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                user_id: userId,
-                post_id: postId,
-                comment: commentContent
-            }),
-            success: function (response) {
-                if (response.status === 'success') {
-                    $('#comment-content').val('');
-                    fetchComments(currentPage, postId);
-                    // Update the URL with the current post_id (if needed)
-                    const urlParams = new URLSearchParams(window.location.search);
-                    urlParams.set('post_id', postId);
-                    urlParams.set('page', currentPage);
-                    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-                    window.history.pushState({ path: newUrl }, '', newUrl);
+        if (userId < 1) {
+            alert('Login to comment!!');
+        }
+        else {
+            const commentContent = $('#comment-content').val();
+            console.log("Comment" + commentContent);
+            console.log("userId: " + userId);
+            console.log("postId: " + postId);
+            $.ajax({
+                url: appURL + 'api/add_comment.php',
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    user_id: userId,
+                    post_id: postId,
+                    comment: commentContent
+                }),
+                success: function (response) {
+                    if (response.status === 'success') {
+                        $('#comment-content').val('');
+                        fetchComments(currentPage, postId, appURL);
+                        // Update the URL with the current post_id (if needed)
+                        const urlParams = new URLSearchParams(window.location.search);
+                        urlParams.set('post_id', postId);
+                        urlParams.set('page', currentPage);
+                        const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                        window.history.pushState({ path: newUrl }, '', newUrl);
 
-                } else {
-                    alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('An error occurred while adding the comment.');
                 }
-            },
-            error: function () {
-                alert('An error occurred while adding the comment.');
-            }
-        });
+            });
+        }
     });
 
     function getPageFromURL() {
@@ -131,7 +135,7 @@ $(document).ready(function () {
         return parseInt(urlParams.get('page'), 1);
     }
 
-    function fetchComments(page, postId) {
+    function fetchComments(page, postId, appURL) {
 
         console.log('Fetching Page: ' + page + "  ->" + postId);
         $.ajax({
@@ -278,7 +282,7 @@ $(document).ready(function () {
         e.preventDefault();
         const page = $(this).data('page');
         if (page) {
-            fetchComments(page, postId);
+            fetchComments(page, postId, appURL);
             // Update URL to reflect the current page
             window.history.pushState(null, '', `?post_id=${postId}&page=${page}`);
         }
@@ -288,7 +292,7 @@ $(document).ready(function () {
     window.onpopstate = function (event) {
         const page = getPageFromURL();
         if (page) {
-            fetchComments(page, postId);
+            fetchComments(page, postId, appURL);
         }
     };
 
@@ -299,7 +303,7 @@ $(document).ready(function () {
 
 
     // Initial fetch
-    fetchComments(currentPage, postId);
+    fetchComments(currentPage, postId, appURL);
 
 });
 

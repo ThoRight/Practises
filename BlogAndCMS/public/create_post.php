@@ -4,7 +4,9 @@ include('../includes/session_management.php');
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     die("Only admins can add post.");
 }
-
+if (!isset($_SESSION['username'])) {
+    header("Location: index.php");
+}
 $userId = $_SESSION['user_id'];
 $currentPage = 'create_post';
 include './navbar/navbar.php';
@@ -19,6 +21,7 @@ include './navbar/navbar.php';
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="stylesheet" href="./css/create_post.css">
     <script type="text/javascript">
@@ -35,8 +38,7 @@ include './navbar/navbar.php';
             <input type="text" class="form-control" id="post-title" placeholder="Enter the post title" required>
             <div id="editor"></div>
             <div class="form-group">
-                <label for="category-select" class="form-label">Choose Categories</label>
-                <select id="category-select" class="form-select" multiple>
+                <select id="category-select" class="js-example-basic-multiple form-select" name="states[]" multiple="multiple">
 
                 </select>
             </div>
@@ -68,6 +70,7 @@ include './navbar/navbar.php';
 
     <!-- Include Embed Tool -->
     <script src="https://cdn.jsdelivr.net/npm/@editorjs/embed@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script src="./js/create_post.js"></script>
     <script src="./js/editorjs.js"></script>
 
