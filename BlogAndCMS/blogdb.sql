@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Anamakine: 127.0.0.1
--- Üretim Zamanı: 16 Ağu 2024, 17:42:47
+-- Üretim Zamanı: 19 Ağu 2024, 08:28:27
 -- Sunucu sürümü: 10.4.32-MariaDB
 -- PHP Sürümü: 8.2.12
 
@@ -127,8 +127,8 @@ INSERT INTO `posts` (`post_id`, `user_id`, `title`, `content`, `category_id`, `m
 (249, 3, 'TEST TITLE', '{\"time\":1723468834929,\"blocks\":[{\"id\":\"A58mJHwDPX\",\"type\":\"paragraph\",\"data\":{\"text\":\"test 123123123\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:20:34'),
 (250, 3, 'TEST TITLE', '{\"time\":1723470455403,\"blocks\":[{\"id\":\"FDJeOkcKZb\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasddasasdsad\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:47:35'),
 (251, 3, 'TEST TITLE', '{\"time\":1723470480637,\"blocks\":[{\"id\":\"4uDJNppiKy\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 0, '2024-08-12 13:48:00'),
-(252, 3, 'TEST TITLE', '{\"time\":1723470543230,\"blocks\":[{\"id\":\"TWV2QdUerK\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdadsasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 28, '2024-08-12 13:49:03'),
-(253, 3, 'TEST TITLE', '{\"time\":1723470563744,\"blocks\":[{\"id\":\"-NCu0ZSwD0\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 45, '2024-08-12 13:49:23'),
+(252, 3, 'TEST TITLE', '{\"time\":1723470543230,\"blocks\":[{\"id\":\"TWV2QdUerK\",\"type\":\"paragraph\",\"data\":{\"text\":\"asdasdadsasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 29, '2024-08-12 13:49:03'),
+(253, 3, 'TEST TITLE', '{\"time\":1723470563744,\"blocks\":[{\"id\":\"-NCu0ZSwD0\",\"type\":\"paragraph\",\"data\":{\"text\":\"adsasdasdasd\"}}],\"version\":\"2.30.4\"}', 1, 0, 48, '2024-08-12 13:49:23'),
 (257, 3, 'TEST TITLE', '{\"time\":1723474552636,\"blocks\":[{\"id\":\"MPXP63sh4F\",\"type\":\"paragraph\",\"data\":{\"text\":\"TEST POST\"}},{\"id\":\"V9G6fm-Kbh\",\"type\":\"image\",\"data\":{\"caption\":\"CAPPTION\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba226fa882c-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-12 14:55:52'),
 (259, 3, 'title', '{\"time\":1723476113847,\"blocks\":[{\"id\":\"8NfFMOLw0v\",\"type\":\"paragraph\",\"data\":{\"text\":\"sadfsadfsadfsadf\"}},{\"id\":\"6niyL-x6yV\",\"type\":\"image\",\"data\":{\"caption\":\"\",\"withBorder\":false,\"withBackground\":false,\"stretched\":false,\"file\":{\"url\":\"http://localhost/BlogAndCMS/api/images/66ba288a46f7b-profile_img.jpg\"}}}],\"version\":\"2.30.4\"}', 1, 0, 3, '2024-08-12 15:21:53'),
 (260, 3, '', '{\"time\":1723536939274,\"blocks\":[],\"version\":\"2.30.4\"}', 1, 0, 2, '2024-08-13 08:15:39'),
