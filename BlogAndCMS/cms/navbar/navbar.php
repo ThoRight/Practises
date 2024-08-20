@@ -1,41 +1,38 @@
 <?php
 include("../config.php");
 
-
-/*
-       <li class="nav-item">
-            <a href="create_post.php" class="nav-link <?php echo ($currentPage == 'create_post') ? 'active' : ''; ?>">
-                Add Post
-            </a>
-        </li>
-        <li class="nav-item">
-            <a href="manage_posts.php" class="nav-link <?php echo ($currentPage == 'manage_posts') ? 'active' : ''; ?>">
-                Manage Posts</a>
-        </li>
-*/
 ?>
 <header class="d-flex justify-content-between align-items-center py-3">
     <!-- Left Side - Navigation Links -->
     <ul class="nav nav-pills">
         <li class="nav-item">
-            <a href="home.php" class="nav-link <?php echo ($currentPage == 'home') ? 'active' : ''; ?>" aria-current="page">
+            <a href="../public/home.php" class="nav-link <?php echo ($currentPage == 'home') ? 'active' : ''; ?>" aria-current="page">
                 Home
             </a>
         </li>
         <li class="nav-item">
-            <a href="posts.php" class="nav-link <?php echo ($currentPage == 'posts') ? 'active' : ''; ?>">
+            <a href="../public/posts.php" class="nav-link <?php echo ($currentPage == 'posts') ? 'active' : ''; ?>">
                 Posts
             </a>
         </li>
         <li class="nav-item">
-            <a href="about.php" class="nav-link <?php echo ($currentPage == 'about') ? 'active' : ''; ?>">
+            <a href="../public/about.php" class="nav-link <?php echo ($currentPage == 'about') ? 'active' : ''; ?>">
                 About
             </a>
         </li>
         <li class="nav-item">
-            <a href="contact.php" class="nav-link <?php echo ($currentPage == 'contact') ? 'active' : ''; ?>">
+            <a href="../public/contact.php" class="nav-link <?php echo ($currentPage == 'contact') ? 'active' : ''; ?>">
                 Contact
             </a>
+        </li>
+        <li class="nav-item">
+            <a href="../public/create_post.php" class="nav-link <?php echo ($currentPage == 'create_post') ? 'active' : ''; ?>">
+                Add Post
+            </a>
+        </li>
+        <li class="nav-item">
+            <a href="../public/manage_posts.php" class="nav-link <?php echo ($currentPage == 'manage_posts') ? 'active' : ''; ?>">
+                Manage Posts</a>
         </li>
     </ul>
 
@@ -55,11 +52,11 @@ include("../config.php");
             <?php
             if (isset($_SESSION['user_id'])) {
                 $user_id = htmlspecialchars($_SESSION['user_id']);
-                echo "<a class='dropdown-item' href='profile.php?user_id=$user_id'>Profile</a>";
-                echo "<a class='dropdown-item' href='logout.php'>Logout</a>";
+                echo "<a class='dropdown-item' href='../public/profile.php?user_id=$user_id'>Profile</a>";
+                echo "<a class='dropdown-item' href='../public/logout.php'>Logout</a>";
             } else {
-                echo "<a class='dropdown-item' href='login.php'>Login</a>";
-                echo "<a class='dropdown-item' href='register.php'>Register</a>";
+                echo "<a class='dropdown-item' href='../public/login.php'>Login</a>";
+                echo "<a class='dropdown-item' href='../public/register.php'>Register</a>";
             }
             ?>
 
