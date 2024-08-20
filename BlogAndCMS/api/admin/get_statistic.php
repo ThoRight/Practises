@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $stats[] = ['name' => 'Total Users', 'value' => $userCount];
     $stats[] = ['name' => 'Total Posts', 'value' => $postCount];
     $stats[] = ['name' => 'Total Comments', 'value' => $commentCount];
-    $stats[] = ['name' => 'Total View', 'value' => $totalViewCount];
+    $stats[] = ['name' => 'Total Views', 'value' => $totalViewCount];
     // Close connection
     $conn->close();
     $response = [

@@ -5,15 +5,38 @@ $(document).ready(function () {
         method: 'GET',
         dataType: 'json',
         success: function (response) {
-            let tbody = $('#statistic table tbody');
-            tbody.empty(); // Clear any existing data
             response.data.forEach((stat, index) => {
-                let row = '<tr>' +
-                    '<th scope="row">' + index + '</th>' +
-                    '<td>' + stat.name + '</td>' +
-                    '<td>' + stat.value + '</td>' +
-                    '</tr>';
-                tbody.append(row);
+                if (stat.name == "Total Users") {
+                    let info = $('#total-users-info');
+                    info.empty();
+                    let row = '<h1>' + stat.value +
+                        '</h1>';
+                    info.append(row);
+                console.log(stat);
+
+                }
+                else if (stat.name == "Total Posts") {
+                    let info = $('#total-posts-info');
+                    info.empty();
+                    let row = '<h1>' + stat.value +
+                        '</h1>';
+                    info.append(row);
+                }
+                if (stat.name == "Total Comments") {
+                    let info = $('#total-comments-info');
+                    info.empty();
+                    let row = '<h1>' + stat.value +
+                        '</h1>';
+                    info.append(row);
+                }
+                if (stat.name == "Total Views") {
+                    let info = $('#total-views-info');
+                    info.empty();
+                    let row = '<h1>' + stat.value +
+                        '</h1>';
+                    info.append(row);
+                }
+
             });
 
         },
