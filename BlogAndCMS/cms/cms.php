@@ -28,53 +28,9 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     $currentPage = "cms";
     include('./navbar/navbar.php');
     ?>
-
-    <div class="container mt-5">
-        <h2 class="mb-4">Statistics</h2>
-        <div class="table-responsive" id="statistic">
-            <table class="table table-striped stats-table">
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Statistic</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Total Users</td>
-                        <td>1,250</td>
-                        <td>2024-08-19</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Active Users</td>
-                        <td>950</td>
-                        <td>2024-08-19</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>New Signups</td>
-                        <td>120</td>
-                        <td>2024-08-19</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Total Posts</td>
-                        <td>450</td>
-                        <td>2024-08-19</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td>Comments Today</td>
-                        <td>89</td>
-                        <td>2024-08-19</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+    <?php
+    include('./cmsCard.php');
+    ?>
 
     <?php
     include '../public/footer/footer.php';

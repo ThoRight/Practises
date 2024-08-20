@@ -14,7 +14,7 @@ $(document).ready(function () {
                 if (Array.isArray(response.data)) {
                     response.data.forEach(function (category) {
                         if (category.category_id != 1) {
-                            var option = $('<option></option>')
+                            let option = $('<option></option>')
                                 .attr('value', category.category_id) // Use category ID as the value
                                 .text(category.category_name);       // Display category name
                             $('#category-select').append(option);
@@ -53,7 +53,7 @@ $(document).ready(function () {
                 }),
                 success: function (data) {
                     console.log('--Success:', data);
-                    var url = appURL + 'public/post_details.php?post_id=' + data.post_id;
+                    let url = appURL + 'public/post_details.php?post_id=' + data.post_id;
 
                     window.location.href = url;
                 },

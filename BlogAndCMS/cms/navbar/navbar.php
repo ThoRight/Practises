@@ -53,6 +53,9 @@ include("../config.php");
             if (isset($_SESSION['user_id'])) {
                 $user_id = htmlspecialchars($_SESSION['user_id']);
                 echo "<a class='dropdown-item' href='../public/profile.php?user_id=$user_id'>Profile</a>";
+                if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin') {
+                    echo "<a class='dropdown-item' href='../cms/cms.php'>CMS</a>";
+                }
                 echo "<a class='dropdown-item' href='../public/logout.php'>Logout</a>";
             } else {
                 echo "<a class='dropdown-item' href='../public/login.php'>Login</a>";

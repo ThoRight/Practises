@@ -169,12 +169,12 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 console.log(data.message);
-                var $categoriesList = $('#categories-list');
+                let $categoriesList = $('#categories-list');
                 $categoriesList.empty();
 
                 data.data.forEach(function (category, index) {
-                    var isActive = (category.category_id == currentCategory) ? 'active' : ''; // Use currentCategory to set active class
-                    var categoryItem = `<li class="list-inline-item">
+                    let isActive = (category.category_id == currentCategory) ? 'active' : ''; // Use currentCategory to set active class
+                    let categoryItem = `<li class="list-inline-item">
                                             <a href="#" class="category-link ${isActive}" data-category-id="${category.category_id}">
                                                 ${category.category_name}
                                             </a>
